@@ -1,0 +1,15 @@
+name = "daily-checklist-monitoring"
+main = "src/index.js"
+compatibility_date = "2026-10-15"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "daily-checklist-db"
+database_id = "7903f509-b687-4e20-a0cd-80876c70d10e"
+# SESSION_SECRET disimpan sebagai Cloudflare Secret: wrangler secret put SESSION_SECRET
+
+# Lapisan kedua rate limit login di edge Cloudflare (sebelum menyentuh Worker/D1)
+[[ratelimits]]
+name = "LOGIN_LIMITER"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }

@@ -1,0 +1,14 @@
+import { webcrypto } from "node:crypto";
+import { createInterface } from "node:readline/promises";
+const crypto=webcrypto;
+const rl=createInterface({input:process.stdin,output:process.stdout});
+const name=await rl.question("Nama admin: ");
+const username=await rl.question("Username admin: ");
+const password=await rl.question("Password (min 8 karakter): ");
+rl.close();
+if(password.length<8)throw new Error("Password minimal 8 karakter");
+const salt=Buffer.from(crypto.getRandomValues(new Uint8Array(16))).toString("base64");
+const key=await crypto.subtle.importKey("raw",new TextEncoder().encode(password),"PBKDF2",false,["deriveBits"]);
+const hash=Buffer.from(await crypto.subtle.deriveBits({name:"PBKDF2",salt:Buffer.from(salt,"base64"),iterations:100000,hash:"SHA-256"},key,256)).toString("base64");
+const q=s=>"'"+s.replaceAll("'","''")+"'";
+console.log(`INSERT INTO users(name,username,password_hash,salt,role) VALUES(${q(name)},${q(username)},${q(hash)},${q(salt)},'admin');`);

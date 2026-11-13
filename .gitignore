@@ -1,0 +1,14 @@
+# Local state & dependencies
+.wrangler/
+node_modules/
+laravel-bms/vendor/
+laravel-bms/node_modules/
+
+# Secrets & environment
+.env
+*.env
+!.env.example
+
+# Logs & OS files
+*.log
+.DS_Store
