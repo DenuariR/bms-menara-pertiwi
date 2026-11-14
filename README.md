@@ -23,7 +23,12 @@ Aplikasi monitoring operasional gedung berbasis Cloudflare Workers + D1 untuk:
 - Monitoring harian, pengelolaan user, serta pengaturan item checklist.
 - **PWA (Progressive Web App)**: bisa dipasang ke layar utama Android via Chrome (**Tambahkan ke layar utama**), tampil fullscreen seperti aplikasi native tanpa Play Store. Sertakan manifest, ikon 192/512, dan service worker.
 - UI menggunakan **Bootstrap 5** (CDN): tombol, tabel, dan form otomatis memakai kelas Bootstrap.
-- **Dashboard Eksekutif** (admin): kartu KPI (progres pengisian, checklist terisi, perlu tindak lanjut, belum mengisi) dengan progress bar + grafik interaktif **Chart.js** — doughnut status, bar per jenis monitoring, dan line tren pengisian 7 hari.
+- **Dashboard Eksekutif interaktif** (admin):
+  - Pemilih **tanggal** sendiri, **muat ulang manual**, dan **segarkan otomatis** (tiap 30/60 detik) dengan cap waktu "terakhir dimuat".
+  - Empat **kartu KPI yang bisa diklik** — progres pengisian (dengan progress bar), checklist terisi, perlu tindak lanjut, belum mengisi — klik kartu → tabel "Monitoring harian" otomatis terfilter.
+  - **Grafik Chart.js interaktif**: doughnut status (klik potongan → filter), bar record per jenis monitoring (klik batang → filter), dan **line tren pengisian 7/14/30 hari** (checklist vs perlu tindak lanjut).
+  - **Matriks progres teknisi** per sesi (0/3, 1/3, 2/3, 3/3 berwarna) — klik sel → rincian jenis monitoring yang belum diisi.
+  - Bar **filter aktif** di tabel monitoring harian dengan tombol "Hapus filter".
 
 ## Deploy instalasi baru
 1. Install Node.js dan Wrangler: `npm install -g wrangler`
