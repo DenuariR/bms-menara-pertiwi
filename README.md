@@ -24,7 +24,6 @@ Aplikasi monitoring operasional gedung berbasis Cloudflare Workers + D1 untuk:
 - **PWA (Progressive Web App)**: bisa dipasang ke layar utama Android via Chrome (**Tambahkan ke layar utama**), tampil fullscreen seperti aplikasi native tanpa Play Store. Sertakan manifest, ikon 192/512, dan service worker.
 - UI menggunakan **Bootstrap 5** (CDN): tombol, tabel, dan form otomatis memakai kelas Bootstrap.
 - **Dashboard Eksekutif** (admin): kartu KPI (progres pengisian, checklist terisi, perlu tindak lanjut, belum mengisi) dengan progress bar + grafik interaktif **Chart.js** — doughnut status, bar per jenis monitoring, dan line tren pengisian 7 hari.
-- Versi paralel **Laravel + Bootstrap** tersedia di folder `laravel-bms/` (untuk hosting PHP; lihat `laravel-bms/README.md`).
 
 ## Deploy instalasi baru
 1. Install Node.js dan Wrangler: `npm install -g wrangler`
