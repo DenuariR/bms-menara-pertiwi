@@ -59,14 +59,13 @@ Sidebar memakai latar `#dcecf9`. Warna status di sidebar memakai `#0f5c40` (ok, 
 ## Bayangan dan gerak
 
 - Satu bayangan di seluruh aplikasi: `dialog` saat terbuka.
-- Transisi hanya untuk toast dan bar muat, maksimal 160ms linear.
+- Transisi hanya untuk toast dan bar muat, maksimal 160ms linear. Bar muat mengisi sekali dari kiri ke kanan dan berhenti penuh selama permintaan berjalan, tanpa putaran tanpa henti.
 - Semua animasi dan gulir halus dimatikan saat `prefers-reduced-motion: reduce`.
 
 ## Komponen
 
 - Header: tinggi 56px, latar `--chrome`, teks `--ink`, garis bawah 3px `--accent`, judul 12.5px kapital. Logo 40px (34px di bawah 520px) dengan latar putih, garis 1px, radius 3px.
-- Login: kartu putih terpusat, lebar maksimal 744px, latar halaman `#f3f5f9`, header dan footer disembunyikan. Judul 40px berat 700 berwarna `#14233a`, deskripsi 20px `#6a7789`, dua bidang bertumpuk penuh lebar dengan tinggi 70px dan radius 10px, tombol 66px berwarna `#205c6b`, dan catatan 18px `#6a7789` di bawah tombol. Tombol tampilkan password muncul saat bidang difokuskan.
-- Pengecualian login atas permintaan pemilik: radius kartu 24px mengesampingkan aturan radius maksimal 4px (R-11), bayangan kartu mengesampingkan aturan hanya `dialog` yang boleh bayangan (R-12), dan `#205c6b` ditambahkan sebagai warna tombol login di luar palet utama (R-29). Pengecualian ini berlaku hanya untuk halaman login.
+- Login: kartu putih terpusat, lebar maksimal 460px, latar halaman `--paper`, header dan footer disembunyikan. Garis atas 3px `--accent` mengikat kartu ini ke motif garis aksi header. Judul 22px kapital `--ink`, deskripsi 13.5px `--muted`, dua bidang bertumpuk penuh lebar dengan tinggi 44px dan radius 3px, tombol `--ink`, dan catatan 12px `--muted`. Tombol tampilkan password muncul saat bidang difokuskan.
 - Sidebar: latar `#dcecf9`, lebar 224px, tombol 32px, penanda aktif garis kiri 3px `--accent` dengan latar putih.
 - Tabel: kepala tabel latar `#f0f7fd`, huruf 10.5px kapital, baris 13px, hover `#f2f8fd`.
 - Readout: nilai mono 25px, label 10px kapital, catatan 11px. Readout bisa diklik dan punya `aria-label` lewat teks di dalamnya.
