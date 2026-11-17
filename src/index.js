@@ -294,7 +294,8 @@ body.auth .wrap{width:100%;max-width:none;padding:24px 16px;display:flex;justify
 #login .grid{display:grid;grid-template-columns:1fr;gap:24px 0}
 #login label{font-size:18px;font-weight:700;letter-spacing:0;text-transform:none;color:#16233a;margin:0 0 10px}
 #login input{min-height:70px;padding:0 16px;font-size:16px;border:1px solid #d5dbe3;border-radius:10px;background:#fff}
-#login .pw-field input{padding-right:78px}
+#login .pw-field input{padding-right:16px}
+#login .pw-field:focus-within input{padding-right:78px}
 #login .pw-toggle{min-height:44px;opacity:0;transition:opacity .12s linear}
 #login .pw-field:hover .pw-toggle,#login .pw-field:focus-within .pw-toggle{opacity:1}
 #loginMsg{margin:16px 0 0;font-size:15px;color:#a02a20}
