@@ -285,8 +285,21 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .ico{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 .site-foot{max-width:1180px;margin:0 auto;padding:2px 20px 20px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);letter-spacing:.03em}
-.login{max-width:400px;margin:6vh auto 0}
-@media(min-width:421px){#login .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+body.auth{min-height:100dvh;display:flex;align-items:center;justify-content:center}
+body.auth .topbar,body.auth .site-foot{display:none}
+body.auth .wrap{width:100%;max-width:none;padding:24px 16px;display:flex;justify-content:center}
+.login{width:100%;max-width:460px;margin:0;padding:28px 28px 24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-panel)}
+.login h2{display:block;font-size:26px;font-weight:650;line-height:1.2;letter-spacing:-.01em;text-transform:none;color:var(--ink);border:0;padding:0;margin:0 0 8px}
+.login-lead{font-size:14px;line-height:1.5;color:var(--muted);margin:0 0 24px}
+#login .grid{display:grid;grid-template-columns:1fr;gap:18px 0}
+#login label{font-size:11px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+#login input{min-height:44px;padding:9px 11px;font-size:14px}
+#login .pw-field input{padding-right:64px}
+#login .pw-toggle{min-height:44px}
+#loginMsg{margin:10px 0 0;font-size:12.5px}
+#loginBtn{min-width:120px;min-height:44px;padding:8px 18px;font-size:14px}
+.login-help{font-size:12px;line-height:1.5;color:var(--muted);margin:14px 0 0}
+@media(max-width:420px){.login{padding:22px 18px 20px}#loginBtn{width:100%}}
 .busy{position:fixed;left:0;right:0;top:0;height:2px;background:transparent;z-index:70;pointer-events:none}
 .busy-bar{height:100%;width:38%;background:var(--accent);animation:busySlide 1s linear infinite}
 @keyframes busySlide{0%{margin-left:-38%}100%{margin-left:100%}}
@@ -309,7 +322,7 @@ dialog::backdrop{background:#0f355680}
 @media(min-width:1024px){#adminArea>.admin-home{position:sticky;top:var(--topbar);z-index:15;max-width:none;margin:0 0 12px;padding:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}#adminArea>.admin-home>h2,#adminArea>.admin-home .tech-greet,#adminArea>.admin-home .side-status{display:none}#adminArea>.admin-home nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:2px}#adminArea>.admin-home nav#adminNavOther{margin-left:auto}#adminArea>.admin-home button{width:auto;font-size:13px;padding:6px 10px}#adminArea>#adminBackBar{display:none}}
 @media(min-width:1440px){.wrap,.site-foot{max-width:1360px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-</style></head><body>
+</style></head><body class="auth">
 <a class="skip" href="#main">Lewati ke konten</a>
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-chiller" viewBox="0 0 24 24"><path d="M12 2v20M3.5 7l17 10M20.5 7l-17 10"/></symbol>
@@ -331,14 +344,15 @@ dialog::backdrop{background:#0f355680}
 </header>
 <main id="main" class="wrap">
 <section id="login" class="panel login">
-<h2>Masuk</h2>
-<p class="muted">Isi checklist harian atau pantau laporan teknisi.</p>
+<h2>Login Engineering</h2>
+<p class="login-lead">Masuk menggunakan akun supervisor atau teknisi.</p>
 <div class="grid">
 <div><label for="username">Username</label><input id="username" name="username" autocomplete="username"></div>
 <div><label for="password">Password</label><div class="pw-field"><input id="password" name="password" type="password" autocomplete="current-password"><button type="button" class="pw-toggle" data-pw="password" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
 </div>
 <p class="toolbar"><button id="loginBtn">Masuk</button></p>
 <p id="loginMsg" class="msg" role="alert"></p>
+<p class="login-help">Password minimal 8 karakter.</p>
 </section>
 <div id="appShell" class="hidden">
 <div class="tech-layout" id="techLayout">
@@ -615,8 +629,8 @@ function chartMissing(){const f=$("chartFallback");if(f)f.hidden=false}
 const api=async(path,opts={})=>{setBusy(1);try{const r=await fetch("/api"+path,{...opts,headers:{"content-type":"application/json","authorization":"Bearer "+token,...opts.headers}});const d=await r.json().catch(()=>({error:"Respons server tidak valid"}));if(r.status===401&&token){logout();$("loginMsg").textContent="Sesi berakhir. Silakan masuk kembali."}if(!r.ok)throw Error(d.error||"Permintaan gagal");return d}finally{setBusy(-1)}};
 const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const itemName=k=>{const s=String(k);return s.includes("::")?s.split("::").slice(1).join("::"):s};
-async function enter(){try{let d=await api("/me");me=d.user;myAllowedShift=me.allowed_shift_id||null;$("login").classList.add("hidden");$("appShell").classList.remove("hidden");$("logout").classList.remove("hidden");$("welcome").textContent="Halo, "+me.name+" ("+(me.role==="admin"?"Admin":"Checklist harian")+")";$("userArea").classList.toggle("hidden",me.role!=="user");$("adminArea").classList.toggle("hidden",me.role!=="admin");$("techSidebar").classList.toggle("hidden",me.role!=="user");if(me.role==="user"){setKindNavActive($("kind").value);techHome();techGreet();loadShiftStatus()}else{const g=$("adminGreet");if(g)g.textContent="Halo, "+(me.name||"Admin");TECH_PANELS.forEach(id=>$(id).classList.add("hidden"));$("techLayout").classList.remove("home");$("techBack").classList.add("hidden");const tg=$("techGreet");if(tg)tg.classList.add("hidden");adminTab(adminWide()?"ringkasan":null);enableCollapse()}loadMyHistory();let today=wibTodayClient();$("date").value=today;$("monitorDate").value=today;renderFields();loadShifts();if(me.role==="admin"){reloadAdmin();$("reportMonth").value=today.slice(0,7);loadMonthly();$("notifDate").value=today;loadNotif();loadItems().catch(()=>{})}else showNotice();loadMySchedule();}catch(e){logout();$("loginMsg").textContent=e.message}}
-function logout(){token="";me=null;myAllowedShift=null;if(dashTimer){clearInterval(dashTimer);dashTimer=null}const da=$("dashAuto");if(da)da.value="0";const pw=$("password");if(pw)pw.value="";$("login").classList.remove("hidden");$("appShell").classList.add("hidden");$("logout").classList.add("hidden")}
+async function enter(){try{let d=await api("/me");me=d.user;myAllowedShift=me.allowed_shift_id||null;$("login").classList.add("hidden");document.body.classList.remove("auth");$("appShell").classList.remove("hidden");$("logout").classList.remove("hidden");$("welcome").textContent="Halo, "+me.name+" ("+(me.role==="admin"?"Admin":"Checklist harian")+")";$("userArea").classList.toggle("hidden",me.role!=="user");$("adminArea").classList.toggle("hidden",me.role!=="admin");$("techSidebar").classList.toggle("hidden",me.role!=="user");if(me.role==="user"){setKindNavActive($("kind").value);techHome();techGreet();loadShiftStatus()}else{const g=$("adminGreet");if(g)g.textContent="Halo, "+(me.name||"Admin");TECH_PANELS.forEach(id=>$(id).classList.add("hidden"));$("techLayout").classList.remove("home");$("techBack").classList.add("hidden");const tg=$("techGreet");if(tg)tg.classList.add("hidden");adminTab(adminWide()?"ringkasan":null);enableCollapse()}loadMyHistory();let today=wibTodayClient();$("date").value=today;$("monitorDate").value=today;renderFields();loadShifts();if(me.role==="admin"){reloadAdmin();$("reportMonth").value=today.slice(0,7);loadMonthly();$("notifDate").value=today;loadNotif();loadItems().catch(()=>{})}else showNotice();loadMySchedule();}catch(e){logout();$("loginMsg").textContent=e.message}}
+function logout(){token="";me=null;myAllowedShift=null;if(dashTimer){clearInterval(dashTimer);dashTimer=null}const da=$("dashAuto");if(da)da.value="0";const pw=$("password");if(pw)pw.value="";$("login").classList.remove("hidden");document.body.classList.add("auth");$("appShell").classList.add("hidden");$("logout").classList.add("hidden")}
 const loginBtn=$("loginBtn");
 async function doLogin(){if(loginBtn.disabled)return;const u=$("username").value.trim(),p=$("password").value;if(!u||!p){$("loginMsg").textContent="Username dan password wajib diisi";return}loginBtn.disabled=true;loginBtn.textContent="Memeriksa...";try{const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({username:u,password:p})});const d=await r.json().catch(()=>({error:"Respons server tidak valid"}));if(!d.token)throw Error(d.error||"Login gagal");token=d.token;$("loginMsg").textContent="";await enter()}catch(e){$("loginMsg").textContent=e.message}finally{loginBtn.disabled=false;loginBtn.textContent="Masuk"}}
 loginBtn.onclick=doLogin;

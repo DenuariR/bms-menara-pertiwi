@@ -65,6 +65,7 @@ Sidebar memakai latar `#dcecf9`. Warna status di sidebar memakai `#0f5c40` (ok, 
 ## Komponen
 
 - Header: tinggi 56px, latar `--chrome`, teks `--ink`, garis bawah 3px `--accent`, judul 12.5px kapital. Logo 40px (34px di bawah 520px) dengan latar putih, garis 1px, radius 3px.
+- Login: kartu putih terpusat, lebar maksimal 460px, latar halaman `--paper`, header dan footer disembunyikan. Judul 26px `--ink`, deskripsi `--muted`, dua bidang bertumpuk penuh lebar, tombol `--ink` di kiri, dan catatan persyaratan password di bawah tombol. Radius kartu 4px dan tanpa bayangan supaya tetap mengikuti aturan permukaan datar.
 - Sidebar: latar `#dcecf9`, lebar 224px, tombol 32px, penanda aktif garis kiri 3px `--accent` dengan latar putih.
 - Tabel: kepala tabel latar `#f0f7fd`, huruf 10.5px kapital, baris 13px, hover `#f2f8fd`.
 - Readout: nilai mono 25px, label 10px kapital, catatan 11px. Readout bisa diklik dan punya `aria-label` lewat teks di dalamnya.
