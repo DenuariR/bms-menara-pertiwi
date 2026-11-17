@@ -119,7 +119,7 @@ button:disabled,select:disabled,input:disabled,textarea:disabled,.btn:disabled{c
 input[type=text],input[type=date],input[type=time],input[type=month],input[type=password],input[type=number],input[type=search],select,textarea{width:100%;max-width:100%;min-height:32px;padding:5px 8px;font-size:13.5px;color:var(--text);background:var(--surface);border:1px solid var(--control);border-radius:var(--r)}
 input::placeholder,textarea::placeholder{color:#4a6a84;opacity:1}
 input:hover,select:hover,textarea:hover{border-color:var(--muted)}
-.form-control,.form-select{min-height:32px;padding:5px 8px;font-size:13.5px;color:var(--text);background-color:var(--surface);border:1px solid var(--control);border-radius:var(--r)}
+.form-control,.form-select{width:100%;max-width:100%;min-height:32px;padding:5px 8px;font-size:13.5px;color:var(--text);background-color:var(--surface);border:1px solid var(--control);border-radius:var(--r)}
 .form-control:focus,.form-select:focus,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--ink);box-shadow:none}
 :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 input:disabled,select:disabled,textarea:disabled{background:#e9f1f8;color:var(--muted);border-color:var(--line)}
@@ -351,7 +351,7 @@ dialog::backdrop{background:#0f355680}
 <h2>Login Engineering</h2>
 <p class="login-lead">Masuk menggunakan akun supervisor atau teknisi.</p>
 <div class="grid">
-<div><label for="username">Username</label><input id="username" name="username" autocomplete="username"></div>
+<div><label for="username">Username</label><input id="username" name="username" type="text" autocomplete="username"></div>
 <div><label for="password">Password</label><div class="pw-field"><input id="password" name="password" type="password" autocomplete="current-password"><button type="button" class="pw-toggle" data-pw="password" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
 </div>
 <p class="toolbar"><button id="loginBtn">Masuk</button></p>
