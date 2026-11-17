@@ -88,6 +88,11 @@ Sidebar memakai latar `#dcecf9`. Warna status di sidebar memakai `#0f5c40` (ok, 
 - Tabel lebar tetap di dalam `.scroll` dengan `overscroll-behavior-x:contain` dan `scrollbar-width:thin`.
 - Grid jadwal bulanan memakai `.scroll` untuk 31 kolom tanggal. Kolom nama menempel di kiri, tinggi sel 30px dan menjadi 44px pada perangkat sentuh, sehingga tanggal lain tetap bisa dicapai tanpa membuat halaman melebar.
 - `html{scroll-padding-top}` dan `scroll-margin-top` panel disamakan dengan tinggi header lengket supaya lompatan ke bagian tidak tertutup header.
+- Navigasi admin di bawah 1024px memakai bilah tab lengket di bawah header. Bilah ini menggantikan tombol kembali supaya perpindahan antar panel cukup satu ketukan. Alasannya, menu vertikal penuh lebar memaksa pengguna kembali ke menu dulu setiap kali ingin pindah tab.
+- Grid jadwal bulanan di bawah 640px diganti daftar 31 tanggal untuk satu teknisi yang dipilih. Alasannya, kolom tanggal tidak bisa dibaca bila 31 kolom dipaksa masuk layar telepon.
+- Tabel **Yang belum mengisi** dan **Jam shift** berubah menjadi daftar kartu di bawah 600px. Alasannya, teks panjang dan input waktu tidak muat dalam empat kolom pada layar sempit.
+- Tabel admin lain menjaga kolom pertama tetap terlihat saat digulir. Alasannya, nama teknisi atau item adalah acuan untuk membaca baris yang sisanya tersembunyi di samping.
+- Bootstrap CSS tidak dipakai. Gaya tombol, tabel, dan input yang sebelumnya berasal dari Bootstrap ditulis langsung di `src/index.js` supaya tidak ada stylesheet pihak ketiga yang memblokir tampilan pertama di jaringan telepon.
 
 ## Larangan
 
