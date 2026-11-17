@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS checklist_items (
  id INTEGER PRIMARY KEY AUTOINCREMENT,
  kind TEXT NOT NULL,
  label TEXT NOT NULL,
+ item_type TEXT NOT NULL DEFAULT 'teks',
  sort_order INTEGER NOT NULL DEFAULT 0,
  active INTEGER NOT NULL DEFAULT 1,
  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -72,6 +73,15 @@ CREATE TABLE IF NOT EXISTS schedules (
   UNIQUE(user_id, shift_id, date)
 );
 CREATE INDEX IF NOT EXISTS idx_schedules_date_shift ON schedules(date, shift_id);
+
+-- Status libur teknisi per tanggal, terpisah dari roster shift
+CREATE TABLE IF NOT EXISTS schedule_off (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  date TEXT NOT NULL,
+  UNIQUE(user_id, date)
+);
+CREATE INDEX IF NOT EXISTS idx_schedule_off_date ON schedule_off(date);
 
 -- Batasi user ke satu shift tertentu (NULL = bebas semua shift)
 ALTER TABLE users ADD COLUMN allowed_shift_id INTEGER;

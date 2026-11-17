@@ -1,6 +1,7 @@
 # Local state & dependencies
 .wrangler/
 node_modules/
+d1-dump/
 laravel-bms/vendor/
 laravel-bms/node_modules/
 

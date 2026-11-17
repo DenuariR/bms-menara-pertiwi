@@ -1,0 +1,15 @@
+{
+  "name": "dcm-pertiwi",
+  "version": "1.0.0",
+  "description": "Aplikasi monitoring operasional gedung berbasis Cloudflare Workers + D1 untuk: - Chiller York Centrifugal - Panel Utama Listrik - Monitoring Ruang Pompa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "postgres": "^4.1.1"
+  }
+}
