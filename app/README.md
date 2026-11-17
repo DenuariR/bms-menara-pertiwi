@@ -2,6 +2,8 @@
 
 Aplikasi ini adalah pembungkus Flutter yang memuat Worker DCM Menara Pertiwi di WebView. Seluruh fitur (login, pengisian checklist, riwayat, rekap bulanan, panel admin) tetap berasal dari Worker. Aplikasi hanya menambah penanganan unduhan, cetak PDF, tombol kembali, dan layar saat koneksi gagal.
 
+Sesi login disimpan di `localStorage` WebView. Selama token masih berlaku, membuka kembali aplikasi langsung masuk ke halaman utama tanpa mengisi username dan password. Tombol Keluar dan token yang kedaluwarsa menghapus sesi tersebut.
+
 ## Isi folder
 
 - `lib/app_config.dart`: nama aplikasi, URL Worker, dan host yang dianggap internal.
