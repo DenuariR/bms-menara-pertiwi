@@ -186,6 +186,11 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .btn-danger{background:var(--crit);border-color:var(--crit);color:#fff}
 .btn-danger:hover{background:#82221a;border-color:#82221a}
 .btn-danger:active{background:#82221a}
+.pw-field{position:relative;display:block;width:100%}
+.pw-field input{width:100%;max-width:100%;padding-right:56px}
+.pw-toggle{position:absolute;right:4px;top:50%;transform:translateY(-50%);min-width:48px;min-height:32px;padding:2px 6px;border:0;border-radius:var(--r);background:transparent;color:var(--accent);font-size:11px;font-weight:650;line-height:1.3;cursor:pointer}
+.pw-toggle:hover{background:#eaf4fc;color:var(--ink)}
+.pw-toggle:active{background:#dcebf7}
 .toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px}
 .msg{font-size:12px;color:var(--muted);display:inline-block}
 .readout-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-panel);overflow:hidden;margin:0 0 10px}
@@ -281,6 +286,7 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 .site-foot{max-width:1180px;margin:0 auto;padding:2px 20px 20px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);letter-spacing:.03em}
 .login{max-width:400px;margin:6vh auto 0}
+@media(min-width:421px){#login .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .busy{position:fixed;left:0;right:0;top:0;height:2px;background:transparent;z-index:70;pointer-events:none}
 .busy-bar{height:100%;width:38%;background:var(--accent);animation:busySlide 1s linear infinite}
 @keyframes busySlide{0%{margin-left:-38%}100%{margin-left:100%}}
@@ -299,7 +305,7 @@ dialog::backdrop{background:#0f355680}
 @media(min-width:601px) and (max-width:860px){#kindNav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.tech-side button{width:auto;padding:8px 6px;font-size:12.5px}}
 @media(max-width:600px){.wrap{padding:12px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}.panel{padding:12px 12px 14px;margin-bottom:10px}.site-foot{padding:2px 12px 16px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}.entry{grid-template-columns:1fr 104px}.trend-row{grid-template-columns:1fr auto;gap:2px 8px;padding:6px 0}.trend-month{grid-column:1}.trend-counts{grid-column:2}.trend-track{grid-column:1/-1}.chart-box{height:170px}h2{font-size:11.5px}dialog{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.dialog-body{max-height:calc(100dvh - 150px);padding:10px 12px}.dialog-head,.dialog-foot{padding-left:12px;padding-right:12px}.readout{padding:8px 10px 9px}.cardtable{overflow:visible}.cardtable table,.cardtable tbody,.cardtable tr,.cardtable td{display:block;width:100%}.cardtable thead{display:none}.cardtable tr{border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;margin:0 0 8px}.cardtable td{border:0;padding:3px 0;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.cardtable td::before{content:attr(data-label);font-size:10px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);flex:0 0 88px}.cardtable td>*{min-width:0}}
 @media(max-width:420px){.readout-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.readout{padding:8px 10px 9px;min-height:80px}.readout-value{font-size:22px}.grid{grid-template-columns:1fr}.entry{grid-template-columns:1fr;gap:2px}.chart-grid{grid-template-columns:1fr}}
-@media(pointer:coarse){button,.btn,input,select,textarea,.form-control,.form-select{min-height:44px}input,select,textarea,.form-control,.form-select,.entry input,.entry select,.tech-side select{font-size:16px}.cellbtn{min-width:44px;min-height:44px;padding:4px 8px}.tech-side button,.admin-home button{padding-top:10px;padding-bottom:10px}.readout{min-height:72px}.collapse-toggle{min-height:44px;padding:6px 4px}.topbar .btn{min-height:44px}.pick{min-height:44px}.pick input{width:20px;height:20px}dialog .dialog-body{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
+@media(pointer:coarse){button,.btn,input,select,textarea,.form-control,.form-select{min-height:44px}input,select,textarea,.form-control,.form-select,.entry input,.entry select,.tech-side select{font-size:16px}.cellbtn{min-width:44px;min-height:44px;padding:4px 8px}.tech-side button,.admin-home button{padding-top:10px;padding-bottom:10px}.readout{min-height:72px}.collapse-toggle{min-height:44px;padding:6px 4px}.topbar .btn{min-height:44px}.pick{min-height:44px}.pick input{width:20px;height:20px}.pw-toggle{min-width:52px;min-height:44px;padding-right:4px;padding-left:4px}dialog .dialog-body{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
 @media(min-width:1024px){#adminArea>.admin-home{position:sticky;top:var(--topbar);z-index:15;max-width:none;margin:0 0 12px;padding:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}#adminArea>.admin-home>h2,#adminArea>.admin-home .tech-greet,#adminArea>.admin-home .side-status{display:none}#adminArea>.admin-home nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:2px}#adminArea>.admin-home nav#adminNavOther{margin-left:auto}#adminArea>.admin-home button{width:auto;font-size:13px;padding:6px 10px}#adminArea>#adminBackBar{display:none}}
 @media(min-width:1440px){.wrap,.site-foot{max-width:1360px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
@@ -329,7 +335,7 @@ dialog::backdrop{background:#0f355680}
 <p class="muted">Isi checklist harian atau pantau laporan teknisi.</p>
 <div class="grid">
 <div><label for="username">Username</label><input id="username" name="username" autocomplete="username"></div>
-<div><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password"></div>
+<div><label for="password">Password</label><div class="pw-field"><input id="password" name="password" type="password" autocomplete="current-password"><button type="button" class="pw-toggle" data-pw="password" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
 </div>
 <p class="toolbar"><button id="loginBtn">Masuk</button></p>
 <p id="loginMsg" class="msg" role="alert"></p>
@@ -508,7 +514,7 @@ dialog::backdrop{background:#0f355680}
 <div class="grid">
 <div><label for="newName">Nama</label><input id="newName" placeholder="Nama lengkap"></div>
 <div><label for="newUser">Username</label><input id="newUser" placeholder="username"></div>
-<div><label for="newUserPass">Password awal</label><input id="newUserPass" type="password" autocomplete="new-password" placeholder="Minimal 8 karakter"></div>
+<div><label for="newUserPass">Password awal</label><div class="pw-field"><input id="newUserPass" type="password" autocomplete="new-password" placeholder="Minimal 8 karakter"><button type="button" class="pw-toggle" data-pw="newUserPass" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
 <div><label for="newRole">Peran</label><select id="newRole"><option value="user">Teknisi</option><option value="admin">Admin</option></select></div>
 </div>
 <p class="toolbar"><button id="addUser">Tambah pengguna</button><span id="userMsg" class="msg" role="status"></span></p>
@@ -543,9 +549,9 @@ dialog::backdrop{background:#0f355680}
 <h2>Ganti password</h2>
 <p class="muted">Ganti password akun ini tanpa bantuan admin.</p>
 <div class="grid">
-<div><label for="curPass">Password saat ini</label><input id="curPass" type="password" autocomplete="current-password"></div>
-<div><label for="newPass">Password baru (min. 8)</label><input id="newPass" type="password" autocomplete="new-password"></div>
-<div><label for="newPass2">Konfirmasi password baru</label><input id="newPass2" type="password" autocomplete="new-password"></div>
+<div><label for="curPass">Password saat ini</label><div class="pw-field"><input id="curPass" type="password" autocomplete="current-password"><button type="button" class="pw-toggle" data-pw="curPass" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
+<div><label for="newPass">Password baru (min. 8)</label><div class="pw-field"><input id="newPass" type="password" autocomplete="new-password"><button type="button" class="pw-toggle" data-pw="newPass" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
+<div><label for="newPass2">Konfirmasi password baru</label><div class="pw-field"><input id="newPass2" type="password" autocomplete="new-password"><button type="button" class="pw-toggle" data-pw="newPass2" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button></div></div>
 </div>
 <p class="toolbar"><button id="gantiBtn">Ganti password</button><span id="gantiMsg" class="msg" role="status"></span></p>
 </section>
@@ -594,7 +600,8 @@ window.addEventListener("resize",function(){var aa=document.getElementById("admi
 var collapseSeq=0;
 function enableCollapse(){document.querySelectorAll('[data-admintab="pengaturan"]').forEach(function(sec){if(sec.dataset.collapsible)return;var h=sec.querySelector("h2");if(!h)return;sec.dataset.collapsible="1";var box=document.createElement("div");box.className="collapse-body";box.id="collapseBody"+(++collapseSeq);var n=h.nextSibling;while(n){var nx=n.nextSibling;box.appendChild(n);n=nx}sec.appendChild(box);var btn=document.createElement("button");btn.type="button";btn.className="collapse-toggle";btn.setAttribute("aria-expanded","true");btn.setAttribute("aria-controls",box.id);btn.innerHTML='<span>Sembunyikan</span><svg class="ico" aria-hidden="true"><use href="#i-chev"/></svg>';h.appendChild(btn);btn.onclick=function(){var hid=box.classList.toggle("hidden");btn.setAttribute("aria-expanded",String(!hid));btn.firstChild.textContent=hid?"Tampilkan":"Sembunyikan"}})}
 document.querySelectorAll("[data-admintab-btn]").forEach(b=>{b.onclick=()=>adminTab(b.dataset.admintabBtn)});var ab=document.getElementById("adminBack");if(ab)ab.onclick=function(){adminTab()};
-let token="",me=null,myAllowedShift=null;if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});function bsApply(root){if(!root.querySelectorAll)return;root.querySelectorAll("button:not(.btn):not(.readout):not(.cellbtn):not(.collapse-toggle)").forEach(b=>b.classList.add("btn",b.classList.contains("secondary")?"btn-outline-secondary":b.classList.contains("danger")?"btn-danger":"btn-primary"));root.querySelectorAll("table:not(.table)").forEach(t=>t.classList.add("table","table-hover","align-middle","mb-0"));root.querySelectorAll("input:not(.form-control),select:not(.form-select),textarea:not(.form-control)").forEach(e=>e.classList.add(e.tagName==="SELECT"?"form-select":"form-control"));}bsApply(document);new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1)bsApply(n)}).observe(document.body,{childList:true,subtree:true});const $=id=>document.getElementById(id);
+let token="",me=null,myAllowedShift=null;if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});function bsApply(root){if(!root.querySelectorAll)return;root.querySelectorAll("button:not(.btn):not(.readout):not(.cellbtn):not(.collapse-toggle):not(.pw-toggle)").forEach(b=>b.classList.add("btn",b.classList.contains("secondary")?"btn-outline-secondary":b.classList.contains("danger")?"btn-danger":"btn-primary"));root.querySelectorAll("table:not(.table)").forEach(t=>t.classList.add("table","table-hover","align-middle","mb-0"));root.querySelectorAll("input:not(.form-control),select:not(.form-select),textarea:not(.form-control)").forEach(e=>e.classList.add(e.tagName==="SELECT"?"form-select":"form-control"));}bsApply(document);new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1)bsApply(n)}).observe(document.body,{childList:true,subtree:true});const $=id=>document.getElementById(id);
+document.querySelectorAll(".pw-toggle").forEach(function(btn){btn.onclick=function(){var input=document.getElementById(btn.getAttribute("data-pw"));if(!input)return;var show=input.type==="password";input.type=show?"text":"password";btn.textContent=show?"Sembunyikan":"Tampilkan";btn.setAttribute("aria-label",(show?"Sembunyikan":"Tampilkan")+" password");btn.setAttribute("aria-pressed",String(show))}});
 let busyCount=0;function setBusy(n){busyCount=Math.max(0,busyCount+n);const b=$("busy");if(b)b.classList.toggle("hidden",!busyCount);const m=$("busyMsg");if(m)m.textContent=busyCount?"Memuat data":"Selesai memuat"}
 let toastTimer=null;function notify(msg,err){const t=$("toast");if(!t)return;t.textContent=String(msg);t.classList.toggle("err",!!err);t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove("show")},4200)}
 function notifyError(e){notify(e&&e.message?e.message:"Permintaan gagal",true)}
