@@ -4,43 +4,45 @@ Dokumen ini mengikat tampilan DCM Menara Pertiwi. Setiap warna, ukuran huruf, ra
 
 ## Alasan
 
-Teknisi memakai aplikasi ini di ruang pompa dan panel listrik, sering sambil berdiri, kadang dengan sarung tangan. Admin memakainya untuk membaca angka dan mengekspor laporan. Tampilan harus terbaca seperti panel HMI dan lembar log tercetak: tenang, padat, dan jelas mana angka mana label. Bukan seperti dashboard SaaS.
+Teknisi memakai aplikasi ini di ruang pompa dan panel listrik, sering sambil berdiri, kadang dengan sarung tangan. Admin memakainya untuk membaca angka dan mengekspor laporan. Tampilan harus terbaca seperti panel HMI di ruang gelap: tenang, padat, dan jelas mana angka mana label. Bukan seperti dashboard SaaS.
 
 ## Prinsip
 
 1. Permukaan datar. Tidak ada gradien, tidak ada bayangan dekoratif. Kedalaman hanya dari garis 1px dan perbedaan latar.
-2. Satu aksen. Biru `#0b5c8a` hanya untuk tautan, garis fokus, penanda aktif, dan grafik. Warna status dipakai pada teks dan kotak kecil, bukan pada seluruh kartu.
+2. Satu aksen. Biru terang `#5ab4e8` hanya untuk tautan, garis fokus, penanda aktif, dan grafik. Warna status dipakai pada teks dan kotak kecil, bukan pada seluruh kartu.
 3. Angka rata. Semua nilai memakai angka tabular dan font monospace. Kolom angka tidak bergoyang saat data berubah.
 4. Radius kecil. 3px untuk kontrol, 4px untuk panel. Sudut membulat besar adalah bahasa visual aplikasi konsumen, bukan alat kerja.
 5. Label huruf besar kecil. Label bidang dan judul panel memakai huruf kapital 10 sampai 12px dengan jarak huruf. Isi tetap huruf normal.
 6. Ikon geometris. SVG garis 16px, bukan emoji. Emoji berubah bentuk antar perangkat dan tidak bisa diwarnai.
-7. Tema biru muda. Header, sidebar, dan latar halaman memakai biru muda. Teks tetap biru tua agar kontras tinggi dan terang di bawah lampu ruang panel.
+7. Tema biru tua. Latar halaman `#081a2b`, panel `#102a41`, dan header `#0c2338`. Teks terang memberi kontras tinggi di ruang panel yang remang.
 
 ## Palet
 
 | Token | Nilai | Pemakaian | Kontras |
 | --- | --- | --- | --- |
-| `--ink` | `#0f3556` | Judul, tombol utama, teks aktif | 12.62:1 dengan putih |
-| `--ink-2` | `#164a72` | Hover tombol utama | |
-| `--ink-3` | `#1d5f8f` | Tombol utama ditekan | |
-| `--paper` | `#eaf4fc` | Latar halaman | |
-| `--surface` | `#ffffff` | Panel, kolom tabel | |
-| `--line` | `#c8dcee` | Garis pemisah, tepi panel | 1.41:1, hanya garis |
-| `--control` | `#5f87a6` | Tepi input dan tombol sekunder | 3.82:1, batas kontrol |
-| `--text` | `#10263c` | Teks utama | 15.39:1 dengan putih |
-| `--muted` | `#41617b` | Teks sekunder | 6.52:1 dengan putih |
-| `--accent` | `#0b5c8a` | Tautan, garis aksen, grafik | 7.21:1 dengan putih |
-| `--ok` | `#146c4c` | Status normal, terisi | 6.40:1 dengan putih |
-| `--warn` | `#8a5200` | Perlu tindak lanjut | 6.39:1 dengan putih |
-| `--crit` | `#a02a20` | Belum mengisi, kritis | 7.38:1 dengan putih |
-| `--focus` | `#0b5c8a` | Cincin fokus | 7.21:1 di putih, 5.91:1 di chrome |
-| `--chrome` | `#d9ebf9` | Header | 10.34:1 dengan `--ink` |
-| `--side-text` | `#123a5c` | Teks sidebar | 9.75:1 di sidebar |
-| `--side-dim` | `#3f6280` | Label sidebar | 5.32:1 di sidebar |
+| `--ink` | `#e6f2fb` | Judul dan teks aktif | 12.91:1 di panel |
+| `--ink-2` | `#c7e2f6` | Teks aktif turunan | |
+| `--ink-3` | `#9fc6e2` | Teks aktif redup | |
+| `--paper` | `#081a2b` | Latar halaman | 15.47:1 dengan `--text` |
+| `--surface` | `#102a41` | Panel, kolom tabel | |
+| `--line` | `#274965` | Garis pemisah, tepi panel | 1.56:1, hanya garis |
+| `--control` | `#4a7a9e` | Tepi input dan tombol sekunder | 3.20:1 di panel |
+| `--text` | `#e6f2fb` | Teks utama | 12.91:1 di panel |
+| `--muted` | `#a7bed1` | Teks sekunder | 7.65:1 di panel |
+| `--accent` | `#5ab4e8` | Tautan, garis aksen, grafik | 6.39:1 di panel |
+| `--ok` | `#6ed3a6` | Status normal, terisi | 8.07:1 di panel |
+| `--warn` | `#f0bd72` | Perlu tindak lanjut | 8.55:1 di panel |
+| `--crit` | `#ff9182` | Belum mengisi, kritis | 6.73:1 di panel |
+| `--focus` | `#7cc8f5` | Cincin fokus | 8.00:1 di panel |
+| `--chrome` | `#0c2338` | Header | 14.06:1 dengan `--ink` |
+| `--side-text` | `#d7e8f5` | Teks sidebar | 12.87:1 di sidebar |
+| `--side-dim` | `#9fb8cd` | Label sidebar | 7.85:1 di sidebar |
+| `--btn` | `#3179a8` | Tombol utama | 4.74:1 dengan teks putih |
+| `--btn-danger` | `#b5473a` | Tombol bahaya | 5.35:1 dengan teks putih |
 
-Sidebar memakai latar `#dcecf9`. Warna status di sidebar memakai `#0f5c40` (ok, 6.63:1) dan `#7a4a00` (perlu perhatian, 6.20:1).
+Sidebar memakai latar `#0d2237`. Logo di header berukuran 124x50px di desktop dan 104x42px di bawah 520px. Logo asli berwarna navy, jadi disajikan putih dengan filter agar terbaca di header gelap.
 
-`<meta name="theme-color">` dan `theme_color` manifest memakai `#d9ebf9`. `background_color` manifest memakai `#eaf4fc`.
+`<meta name="theme-color">` dan `theme_color` manifest memakai `#0c2338`. `background_color` manifest memakai `#081a2b`.
 
 ## Tipografi
 
@@ -64,17 +66,17 @@ Sidebar memakai latar `#dcecf9`. Warna status di sidebar memakai `#0f5c40` (ok, 
 
 ## Komponen
 
-- Header: tinggi 56px, latar `--chrome`, teks `--ink`, garis bawah 3px `--accent`, judul 12.5px kapital. Logo 40px (34px di bawah 520px) dengan latar putih, garis 1px, radius 3px.
+- Header: tinggi 56px, latar `--chrome`, teks `--ink`, garis bawah 3px `--accent`, judul 12.5px kapital. Logo 124x50px (104x42px di bawah 520px), tanpa latar dan tanpa garis, ditampilkan putih di atas header gelap.
 - Login: kartu putih terpusat, lebar maksimal 460px, latar halaman `--paper`, header dan footer disembunyikan. Garis atas 3px `--accent` mengikat kartu ini ke motif garis aksi header. Judul 22px kapital `--ink`, deskripsi 13.5px `--muted`, dua bidang bertumpuk penuh lebar dengan tinggi 44px dan radius 3px, tombol `--ink`, dan catatan 12px `--muted`. Tombol tampilkan password muncul saat bidang difokuskan.
-- Sidebar: latar `#dcecf9`, lebar 224px, tombol 32px, penanda aktif garis kiri 3px `--accent` dengan latar putih.
-- Tabel: kepala tabel latar `#f0f7fd`, huruf 10.5px kapital, baris 13px, hover `#f2f8fd`.
+- Sidebar: latar `#0d2237`, lebar 224px, tombol 32px, penanda aktif garis kiri 3px `--accent` dengan latar `--surface`.
+- Tabel: kepala tabel latar `#16354c`, huruf 10.5px kapital, baris 13px, hover `#173a54`.
 - Readout: nilai mono 25px, label 10px kapital, catatan 11px. Readout bisa diklik dan punya `aria-label` lewat teks di dalamnya.
 - Status: selalu teks. Warna hanya penguat, tidak pernah satu-satunya pembeda.
 - Riwayat checklist user: kolom terakhir **Aksi** berisi tombol Lihat dan Edit, tidak membungkus ke baris berikutnya. Tombol Edit membuka checklist tersimpan di form dengan tanggal, jenis, dan sesi terkunci, lalu tombol simpan berubah menjadi **Perbarui checklist**. Tombol **Isi yang terlewat** membuka dialog berisi tanggal dan tabel sesi serta jenis yang belum terisi; tombol Isi memakai form yang sama dengan tombol simpan **Simpan checklist terlewat**.
 - Sidebar teknisi: shift tampil sebagai kotak teks berisi nama dan jam, bukan dropdown. Shift diambil otomatis dari jadwal tanggal terpilih, lalu shift pembatas akun, lalu shift yang sedang berjalan.
 - Panel **Yang belum mengisi**: satu baris per shift, urut jam mulai (Pagi, Sore, Malam), kolom Shift | Teknisi | Terisi | Yang belum diisi. Nama shift tebal dengan jam di bawahnya, teknisi dipisah koma. Kolom Terisi memakai bentuk `6/9`, atau `-` bila shift tanpa teknisi. "Lengkap semua sesi" memakai `--ok`, rincian kekurangan `--warn`, dan shift tanpa teknisi `--muted`. Tidak ada latar khusus per shift.
 - Grafik: garis `--accent`, batang `--accent`, status memakai `--ok`, `--warn`, `--crit`. Legenda 11px dengan teks `--muted`. Legenda tren memakai urutan yang sama dengan donut: hijau terisi, amber tindak lanjut, merah belum diisi.
-- Grid jadwal bulanan: satu baris per teknisi, satu kolom per tanggal, kepala dua baris (nomor tanggal lalu singkatan hari). Nama teknisi menempel di kiri saat tabel digeser, diikuti dua tombol kecil ↑ dan ↓ untuk memindahkan baris ke atas atau ke bawah; tombol nonaktif di ujung atas dan bawah, dan urutan disimpan ke server. Sel memakai kode P, S, M, O, atau tanda - dengan latar `#f0f7fd` untuk O. Tanggal Minggu memakai `--crit` pada kepala kolom sebagai penanda hari libur pekan, bukan status checklist. Klik sel membuka dialog shift berisi kotak centang dan tombol Simpan. Dialog menampilkan jadwal tersimpan di `#schedCellNow`, tetapi centang selalu mulai kosong supaya isian baru menggantikan jadwal lama sepenuhnya. Tombol bahaya **Hapus jadwal** di kaki dialog menghapus satu sel teknisi pada tanggal itu; tombol nonaktif bila sel belum berisi.
+- Grid jadwal bulanan: satu baris per teknisi, satu kolom per tanggal, kepala dua baris (nomor tanggal lalu singkatan hari). Nama teknisi menempel di kiri saat tabel digeser, diikuti dua tombol kecil ↑ dan ↓ untuk memindahkan baris ke atas atau ke bawah; tombol nonaktif di ujung atas dan bawah, dan urutan disimpan ke server. Sel memakai kode P, S, M, O, atau tanda - dengan latar `#16354c` untuk O. Tanggal Minggu memakai `--crit` pada kepala kolom sebagai penanda hari libur pekan, bukan status checklist. Klik sel membuka dialog shift berisi kotak centang dan tombol Simpan. Dialog menampilkan jadwal tersimpan di `#schedCellNow`, tetapi centang selalu mulai kosong supaya isian baru menggantikan jadwal lama sepenuhnya. Tombol bahaya **Hapus jadwal** di kaki dialog menghapus satu sel teknisi pada tanggal itu; tombol nonaktif bila sel belum berisi.
 - Isi otomatis: tombol utama di toolbar grid. Tanggal 1 sampai 10 menjadi acuan status tiap teknisi; urutan status uniknya diurutkan menjadi blok dua hari (PP SS MM OO) dan diterapkan ke tanggal 11 sampai akhir bulan. Blok terakhir di tanggal 1-10 dihitung supaya sambungan ke tanggal 11 tidak membuat status yang sama lebih dari dua hari. Pola yang hanya memuat satu status ditolak dengan pesan yang menyebut nama teknisi, sedangkan teknisi tanpa jadwal di tanggal 1-10 dilewati dan tanggal 11 ke atas dibiarkan kosong untuknya. Tombol meminta konfirmasi karena menimpa jadwal yang sudah ada.
 - Hapus jadwal: tombol bahaya di toolbar grid untuk mengosongkan shift dan Libur pada bulan yang tampil. Konfirmasi dulu, lalu status hasil ditulis di `#schedMonthMsg`.
 
