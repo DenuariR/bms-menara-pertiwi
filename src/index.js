@@ -213,20 +213,6 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .chart-box{position:relative;height:clamp(170px,16vw,230px);min-width:0}
 .chart-box canvas{max-width:100%}
 .btn.range.active{background:var(--btn);border-color:var(--btn);color:#ffffff}.btn.range.active:hover{background:rgba(0,0,0,.85);border-color:rgba(0,0,0,.85)}
-.trend-leg{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0 0 8px;font-size:12px;color:var(--muted)}
-.trend-leg span{display:inline-flex;align-items:center;gap:6px}
-.sw{width:9px;height:9px;flex:0 0 auto;display:inline-block;border:1px solid rgba(230,242,251,.12)}
-.sw-filled{background:#16803f}.sw-follow{background:#a85f00}.sw-missing{background:#c22f2f}
-.trend-row{display:grid;grid-template-columns:92px 1fr 128px;gap:8px;align-items:center;padding:4px 0;border-bottom:1px solid rgba(0,0,0,.22);font-size:12.5px}
-.trend-row:last-child{border-bottom:0}
-.trend-month{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.trend-track{display:flex;height:12px;background:rgba(0,0,0,.22);border:1px solid var(--line);overflow:hidden}
-.trend-fill{height:100%}
-.trend-filled{background:#16803f}.trend-follow{background:#a85f00}.trend-missing{background:#c22f2f}
-.trend-counts{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.health-card{border:1px solid var(--line);border-radius:var(--r-panel);padding:10px 12px;background:rgba(0,0,0,.05)}
-.health-card b,.health-card strong{font-size:12.5px;color:var(--ink)}
-.health-state{font-size:14px;font-weight:650;margin-top:4px}
 .state-normal{color:var(--ok);font-weight:600}.state-warning{color:var(--warn);font-weight:650;font-style:italic}.state-critical{color:var(--crit);font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .entry{display:grid;grid-template-columns:1fr 128px;gap:8px 10px;align-items:center;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.22)}
 .entry:last-child{border-bottom:0}
@@ -283,7 +269,6 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .cellbtn:hover{border-color:var(--ink)}
 .cellbtn.miss{color:var(--crit);border:1px dashed #000000;background:transparent;font-weight:700}
 .cellbtn:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
-.trend-list{display:grid;gap:2px;margin-top:6px}
 .hist-groups{margin-top:8px}
 .hist-shift{border:1px solid var(--line);border-radius:var(--r-panel);margin:0 0 10px;overflow:hidden}
 .hist-shift>h3{margin:0;padding:8px 10px;background:rgba(0,0,0,.06);border-bottom:1px solid var(--line)}
@@ -327,9 +312,9 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 .dialog-body table{font-size:12.5px}
 .dialog-foot{padding:10px 16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:6px}
 .dialog-foot .danger{margin-right:auto}
-@media(max-width:860px){.tech-layout{flex-direction:column;gap:10px}.tech-side{position:static;width:100%;flex:none;max-height:none;overflow:visible}#kindNav{display:flex;flex-direction:column}.tech-side button{width:100%}.readout-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.trend-row{grid-template-columns:80px 1fr 112px}}
+@media(max-width:860px){.tech-layout{flex-direction:column;gap:10px}.tech-side{position:static;width:100%;flex:none;max-height:none;overflow:visible}#kindNav{display:flex;flex-direction:column}.tech-side button{width:100%}.readout-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(min-width:601px) and (max-width:860px){#kindNav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}.tech-side button{width:auto;padding:8px 6px;font-size:12.5px}}
-@media(max-width:600px){.wrap{padding:12px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}.panel{padding:12px 12px 14px;margin-bottom:10px}.site-foot{padding:2px 12px 16px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}.entry{grid-template-columns:1fr 104px}.trend-row{grid-template-columns:1fr auto;gap:2px 8px;padding:6px 0}.trend-month{grid-column:1}.trend-counts{grid-column:2}.trend-track{grid-column:1/-1}.chart-box{height:170px}h2{font-size:11.5px}dialog{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.dialog-body{max-height:calc(100dvh - 150px);padding:10px 12px}.dialog-head,.dialog-foot{padding-left:12px;padding-right:12px}.readout{padding:8px 10px 9px}.cardtable{overflow:visible}.cardtable table,.cardtable tbody,.cardtable tr,.cardtable td{display:block;width:100%}.cardtable thead{display:none}.cardtable tr{border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;margin:0 0 8px}.cardtable td{border:0;padding:3px 0;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.cardtable td::before{content:attr(data-label);font-size:10px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);flex:0 0 88px}.cardtable td>*{min-width:0}}
+@media(max-width:600px){.wrap{padding:12px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}.panel{padding:12px 12px 14px;margin-bottom:10px}.site-foot{padding:2px 12px 16px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}.entry{grid-template-columns:1fr 104px}.chart-box{height:170px}h2{font-size:11.5px}dialog{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px)}.dialog-body{max-height:calc(100dvh - 150px);padding:10px 12px}.dialog-head,.dialog-foot{padding-left:12px;padding-right:12px}.readout{padding:8px 10px 9px}.cardtable{overflow:visible}.cardtable table,.cardtable tbody,.cardtable tr,.cardtable td{display:block;width:100%}.cardtable thead{display:none}.cardtable tr{border:1px solid var(--line);border-radius:var(--r);padding:8px 10px;margin:0 0 8px}.cardtable td{border:0;padding:3px 0;display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.cardtable td::before{content:attr(data-label);font-size:10px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);flex:0 0 88px}.cardtable td>*{min-width:0}}
 @media(max-width:420px){.readout-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.readout{padding:8px 10px 9px;min-height:80px}.readout-value{font-size:22px}.grid{grid-template-columns:1fr}.entry{grid-template-columns:1fr;gap:2px}.chart-grid{grid-template-columns:1fr}}
 @media(pointer:coarse){button,.btn,input,select,textarea,.form-control,.form-select{min-height:44px}input,select,textarea,.form-control,.form-select,.entry input,.entry select,.tech-side select{font-size:16px}.cellbtn{min-width:44px;min-height:44px;padding:4px 8px}.tech-side button,.admin-home button{padding-top:10px;padding-bottom:10px}.readout{min-height:72px}.collapse-toggle{min-height:44px;padding:6px 4px}.topbar .btn{min-height:44px}.pick{min-height:44px}.pick input{width:20px;height:20px}.pw-toggle{min-width:52px;min-height:44px;padding-right:4px;padding-left:4px}dialog .dialog-body{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
 @media(min-width:1024px){#adminArea>.admin-home{position:sticky;top:var(--topbar);z-index:15;max-width:none;margin:0 0 12px;padding:6px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}#adminArea>.admin-home>h2,#adminArea>.admin-home .tech-greet,#adminArea>.admin-home .side-status{display:none}#adminArea>.admin-home nav{display:flex;flex-direction:row;flex-wrap:wrap;gap:2px}#adminArea>.admin-home nav#adminNavOther{margin-left:auto}#adminArea>.admin-home button{width:auto;font-size:13px;padding:6px 10px}#adminArea>#adminBackBar{display:none}}
@@ -480,14 +465,6 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 <p class="muted">Angka per jenis monitoring pada tanggal terpilih. Tabel ini sumber angka untuk readout di atas.</p>
 <div class="scroll scroll-sticky" tabindex="0" role="region" aria-label="Rincian per jenis monitoring, dapat digulir"><table><thead><tr><th>Jenis Monitoring</th><th>Sudah Diisi</th><th>Perlu Tindak Lanjut</th><th>Belum Diisi</th></tr></thead><tbody id="kindSummary"></tbody></table></div>
 <p class="muted scroll-hint">Geser tabel ke samping untuk melihat kolom lain.</p>
-</section>
-<section data-admintab="ringkasan" class="panel">
-<h2>Kondisi peralatan</h2>
-<p class="muted">Kondisi diturunkan dari status checklist pada tanggal terpilih, bukan sensor otomatis.</p>
-<div class="grid" id="equipmentHealth"></div>
-<h3>Tren 6 bulan</h3>
-<div class="trend-leg"><span><i class="sw sw-filled"></i>Sudah diisi</span><span><i class="sw sw-follow"></i>Perlu tindak lanjut</span><span><i class="sw sw-missing"></i>Belum diisi</span></div>
-<div id="trendChart" class="trend-list"></div>
 </section>
 <section data-admintab="ringkasan" class="panel" id="notifPanel">
 <h2>Yang belum mengisi</h2>
@@ -746,31 +723,6 @@ const kinds=["Chiller York Centrifugal","Panel Utama Listrik","Monitoring Ruang 
 mk("cKind","bar",["Chiller","Panel listrik","Ruang pompa"],[{data:kinds.map(k=>d.reports.filter(r=>r.kind===k).length),backgroundColor:CHART_COLORS.kinds}],{...base,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{precision:0,color:"rgba(0,0,0,.72)"},grid:{color:"rgba(0,0,0,.22)"}},x:{ticks:{color:"rgba(0,0,0,.72)"},grid:{display:false}}},onClick:(evt,els)=>{if(els.length)kpiClick("kind",kinds[els[0].index])}});
 drawTrendChart()}
 async function loadAdmin(){const date=$("monitorDate").value;let d=await api("/admin/summary?date="+date);if(date!==$("monitorDate").value)return;lastSummary=d;lastSummaryDate=date;const techCount=d.users.filter(u=>u.role==="user").length;$("userCount").textContent=techCount;$("todayCount").textContent=d.todayCount;$("missingCount").textContent=Math.max(0,techCount-d.submittedUsers);const filled=d.reports.filter(r=>(r.status||"Sudah Diisi")==="Sudah Diisi").length;const follow=d.reports.filter(r=>r.status==="Perlu Tindak Lanjut").length;const expected=techCount*3;$("filledCount").textContent=filled;$("followCount").textContent=follow;$("completionRate").textContent=(expected?Math.min(100,Math.round(d.reports.length/expected*100)):0)+"%";$("completionBar").style.width=$("completionRate").textContent;$("kpiFilledDetail").textContent=d.reports.length+" record";$("kindSummary").innerHTML=["Chiller York Centrifugal","Panel Utama Listrik","Monitoring Ruang Pompa"].map(k=>{let a=d.reports.filter(r=>r.kind===k);return "<tr><td>"+escapeHtml(k)+"</td><td>"+a.filter(r=>(r.status||"Sudah Diisi")==="Sudah Diisi").length+"</td><td>"+a.filter(r=>r.status==="Perlu Tindak Lanjut").length+"</td><td>"+Math.max(0,techCount*3-a.length)+"</td></tr>"}).join("");$("users").innerHTML=d.users.map(u=>"<tr><td>"+escapeHtml(u.name)+"</td><td>"+escapeHtml(u.username)+"</td><td>"+(u.role==="admin"?"Admin":"Teknisi")+"</td><td>"+(u.id===(me&&me.id)?"-":"<button class='danger' onclick='removeUser("+u.id+")'>Hapus</button>")+"</td></tr>").join("");$("dashDate").value=$("monitorDate").value;$("dashStamp").textContent="Dimuat "+new Date().toLocaleTimeString("id-ID")+", "+d.reports.length+" record, "+techCount+" teknisi";renderReports(d);renderTechMatrix(d);drawExecCharts(d);if($("adminHomeStatus"))$("adminHomeStatus").textContent=techCount+" teknisi, "+d.reports.length+" checklist pada "+$("monitorDate").value}
-async function loadManagementInsights(){
- try{
-  const date=$("monitorDate").value;
-  const d=await api("/admin/trends");
-  const latest=(lastSummary&&lastSummaryDate===date)?lastSummary:await api("/admin/summary?date="+date);
-  if(date!==$("monitorDate").value)return;
-  const tech=latest.users.filter(u=>u.role==="user").length;
-  $("equipmentHealth").innerHTML=["Chiller York Centrifugal","Panel Utama Listrik","Monitoring Ruang Pompa"].map(k=>{
-   const rows=latest.reports.filter(r=>r.kind===k), follow=rows.filter(r=>r.status==="Perlu Tindak Lanjut").length;
-   const missing=Math.max(0,tech*3-rows.length);
-   const perUser={};rows.forEach(r=>{perUser[r.user_id]=(perUser[r.user_id]||0)+1});
-   const missingTech=Math.max(0,tech-Object.keys(perUser).filter(id=>perUser[id]>=3).length);
-   const state=follow?"Kritis":missing?"Perhatian":"Normal";
-   const cls=state==="Kritis"?"state-critical":state==="Perhatian"?"state-warning":"state-normal";
-   const parts=[];if(follow)parts.push(follow+" perlu tindak lanjut");if(missing)parts.push(missing+" record belum diisi ("+missingTech+" teknisi belum lengkap)");
-   const detail=parts.length?parts.join(", "):"Checklist terisi tanpa temuan";
-   return '<div class="health-card"><span class="field-label">'+escapeHtml(k)+'</span><div class="health-state '+cls+'">'+state+'</div><div class="muted">'+detail+'</div></div>';
-  }).join("");
-  $("trendChart").innerHTML=d.trends.map(x=>{
-   const total=Math.max(1,x.filled+x.follow+x.missing), a=x.filled/total*100,b=x.follow/total*100,c=x.missing/total*100;
-   const note="Sudah diisi "+x.filled+", tindak lanjut "+x.follow+", belum diisi "+x.missing;
-   return '<div class="trend-row"><span class="trend-month">'+escapeHtml(x.month)+'</span><div class="trend-track" title="'+note+'"><div class="trend-fill trend-filled" style="width:'+a+'%"></div><div class="trend-fill trend-follow" style="width:'+b+'%"></div><div class="trend-fill trend-missing" style="width:'+c+'%"></div></div><span class="trend-counts" aria-label="'+note+'">'+x.filled+' / '+x.follow+' / '+x.missing+'</span></div>';
-  }).join("")||'<p class="muted">Belum ada data tren.</p>';
- }catch(e){$("trendChart").textContent="Data tren belum dapat dimuat: "+e.message}
-}
 window.removeUser=async id=>{if(!confirm("Hapus user ini? Data checklist milik user juga akan dihapus."))return;try{await api("/admin/users/"+id,{method:"DELETE"});reloadAdmin();notify("Pengguna dihapus")}catch(e){notifyError(e)}};
 window.showDetail=values=>{const rows=Object.entries(values||{}).map(([k,v])=>"<tr><td>"+escapeHtml(itemName(k))+"</td><td>"+escapeHtml(v)+"</td></tr>").join("");openInfo("Rincian nilai",rows?"<table><tbody>"+rows+"</tbody></table>":'<p class="muted">Tidak ada nilai pada checklist ini.</p>')};
 
@@ -781,7 +733,7 @@ $("addItem").onclick=async()=>{try{await api("/admin/items",{method:"POST",body:
 $("exportCsv").onclick=async()=>{try{const d=await api("/admin/summary?date="+$("monitorDate").value);const rs=d.reports.filter(r=>!$("monitorKind").value||r.kind===$("monitorKind").value);if(!rs.length){notify("Tidak ada data checklist pada tanggal ini",true);return}await exportWorkbook(rs,"MONITORING HARIAN "+$("monitorDate").value,"DCM-Menara-Pertiwi-Harian-"+$("monitorDate").value+".xlsx")}catch(e){notifyError(e)}};
 async function showNotice(){try{let d=await api("/my-status?date="+$("date").value);if(!d.completed)notify("Checklist hari ini belum diisi.",true);}catch{}}
 $("addUser").onclick=async()=>{try{await api("/admin/users",{method:"POST",body:JSON.stringify({name:$("newName").value,username:$("newUser").value,password:$("newUserPass").value,role:$("newRole").value})});$("userMsg").textContent="Pengguna ditambahkan";$("newName").value=$("newUser").value=$("newUserPass").value="";reloadAdmin()}catch(e){$("userMsg").textContent=e.message}};
-function reloadAdmin(){loadAdmin().catch(notifyError);loadManagementInsights()}
+function reloadAdmin(){loadAdmin().catch(notifyError)}
 function setAdminDate(v){if(!v)return;var month=String(v).slice(0,7);["monitorDate","dashDate","notifDate"].forEach(function(id){var el=$(id);if(el)el.value=v});["reportMonth","schedMonth"].forEach(function(id){var el=$(id);if(el)el.value=month});reloadAdmin();loadNotif();if(typeof loadMonthly==="function")loadMonthly();if(typeof loadSched==="function")loadSched()}
 $("refresh").onclick=reloadAdmin;$("monitorDate").onchange=()=>setAdminDate($("monitorDate").value);$("monitorKind").onchange=reloadAdmin;
 
