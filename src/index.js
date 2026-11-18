@@ -284,6 +284,15 @@ td .btn,td button{padding:2px 8px;font-size:12px}
 .cellbtn.miss{color:var(--crit);border:1px dashed #000000;background:transparent;font-weight:700}
 .cellbtn:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .trend-list{display:grid;gap:2px;margin-top:6px}
+.hist-groups{margin-top:8px}
+.hist-shift{border:1px solid var(--line);border-radius:var(--r-panel);margin:0 0 10px;overflow:hidden}
+.hist-shift>h3{margin:0;padding:8px 10px;background:rgba(0,0,0,.06);border-bottom:1px solid var(--line)}
+.hist-shift>h3 span{font-weight:400}
+.hist-session{padding:8px 10px;border-bottom:1px solid var(--line)}
+.hist-session:last-child{border-bottom:0}
+.hist-session .field-label{margin:0 0 6px}
+.hist-session table{font-size:12.5px}
+.hist-empty{font-size:12.5px;color:var(--muted);margin:0}
 .ico{width:16px;height:16px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .sprite{position:absolute;width:0;height:0;overflow:hidden}
 .site-foot{max-width:1180px;margin:0 auto;padding:2px 20px 20px;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);letter-spacing:.03em}
@@ -489,6 +498,15 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 <p class="toolbar"><button id="notifRefresh">Cek</button><span id="notifMsg" class="msg" role="status"></span></p>
 <div class="scroll cardtable" tabindex="0" role="region" aria-label="Kekurangan pengisian per shift, dapat digulir"><table><caption class="sr-only">Kekurangan pengisian per shift</caption><thead><tr><th>Shift</th><th>Teknisi</th><th>Terisi</th><th>Yang belum diisi</th></tr></thead><tbody id="notifRows"><tr><td colspan="4" class="muted">Pilih tanggal, lalu tekan Cek</td></tr></tbody></table></div>
 </section>
+<section data-admintab="ringkasan" class="panel" id="adminHistoryPanel">
+<h2>Riwayat checklist per shift dan sesi</h2>
+<p class="muted">Data yang sudah diisi pada tanggal terpilih, dikelompokkan menurut shift dan sesi. Tanggal default adalah hari sebelumnya, sehingga checklist hari ini muncul keesokan harinya.</p>
+<div class="grid">
+<div><label for="histDate">Tanggal</label><input type="date" id="histDate"></div>
+</div>
+<p class="toolbar"><button id="histRefresh">Tampilkan riwayat</button><span id="histMsg" class="msg" role="status"></span></p>
+<div id="histSummary" class="hist-groups"><p class="muted">Pilih tanggal, lalu tekan Tampilkan riwayat.</p></div>
+</section>
 <section data-admintab="ringkasan" class="panel" id="dashShiftPanel">
 <h2>Jam shift</h2>
 <p class="muted">Ubah jam mulai dan selesai tiap shift langsung dari dashboard. Perubahan langsung dipakai pada pilihan sesi pengisian.</p>
@@ -633,7 +651,7 @@ function chartMissing(){const f=$("chartFallback");if(f)f.hidden=false}
 const api=async(path,opts={})=>{setBusy(1);try{const r=await fetch("/api"+path,{...opts,headers:{"content-type":"application/json","authorization":"Bearer "+token,...opts.headers}});const d=await r.json().catch(()=>({error:"Respons server tidak valid"}));if(r.status===401&&token){logout();$("loginMsg").textContent="Sesi berakhir. Silakan masuk kembali."}if(!r.ok)throw Error(d.error||"Permintaan gagal");return d}finally{setBusy(-1)}};
 const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const itemName=k=>{const s=String(k);return s.includes("::")?s.split("::").slice(1).join("::"):s};
-async function enter(){try{let d=await api("/me");me=d.user;myAllowedShift=me.allowed_shift_id||null;$("login").classList.add("hidden");document.body.classList.remove("auth");$("appShell").classList.remove("hidden");$("logout").classList.remove("hidden");updateFormTitle();$("userArea").classList.toggle("hidden",me.role!=="user");$("adminArea").classList.toggle("hidden",me.role!=="admin");$("techSidebar").classList.toggle("hidden",me.role!=="user");if(me.role==="user"){setKindNavActive($("kind").value);techHome();techGreet();loadShiftStatus()}else{const g=$("adminGreet");if(g)g.textContent="Halo, "+(me.name||"Admin");TECH_PANELS.forEach(id=>$(id).classList.add("hidden"));$("techLayout").classList.remove("home");$("techBack").classList.add("hidden");const tg=$("techGreet");if(tg)tg.classList.add("hidden");adminTab(adminWide()?"ringkasan":null);enableCollapse()}loadMyHistory();let today=wibTodayClient();$("date").value=today;$("monitorDate").value=today;renderFields();loadShifts();if(me.role==="admin"){reloadAdmin();$("reportMonth").value=today.slice(0,7);loadMonthly();$("notifDate").value=today;loadNotif();loadItems().catch(()=>{})}else showNotice();loadMySchedule();}catch(e){if(token)$("loginMsg").textContent=e.message}}
+async function enter(){try{let d=await api("/me");me=d.user;myAllowedShift=me.allowed_shift_id||null;$("login").classList.add("hidden");document.body.classList.remove("auth");$("appShell").classList.remove("hidden");$("logout").classList.remove("hidden");updateFormTitle();$("userArea").classList.toggle("hidden",me.role!=="user");$("adminArea").classList.toggle("hidden",me.role!=="admin");$("techSidebar").classList.toggle("hidden",me.role!=="user");if(me.role==="user"){setKindNavActive($("kind").value);techHome();techGreet();loadShiftStatus()}else{const g=$("adminGreet");if(g)g.textContent="Halo, "+(me.name||"Admin");TECH_PANELS.forEach(id=>$(id).classList.add("hidden"));$("techLayout").classList.remove("home");$("techBack").classList.add("hidden");const tg=$("techGreet");if(tg)tg.classList.add("hidden");adminTab(adminWide()?"ringkasan":null);enableCollapse()}loadMyHistory();let today=wibTodayClient();$("date").value=today;$("monitorDate").value=today;renderFields();loadShifts();if(me.role==="admin"){reloadAdmin();$("reportMonth").value=today.slice(0,7);loadMonthly();$("notifDate").value=today;loadNotif();$("histDate").value=wibPrevDay();loadAdminHistory();loadItems().catch(()=>{})}else showNotice();loadMySchedule();}catch(e){if(token)$("loginMsg").textContent=e.message}}
 function logout(){token="";try{localStorage.removeItem("dcm_token")}catch(e){}me=null;myAllowedShift=null;if(dashTimer){clearInterval(dashTimer);dashTimer=null}const da=$("dashAuto");if(da)da.value="0";const pw=$("password");if(pw)pw.value="";$("login").classList.remove("hidden");document.body.classList.add("auth");$("appShell").classList.add("hidden");$("logout").classList.add("hidden")}
 const loginBtn=$("loginBtn");
 async function doLogin(){if(loginBtn.disabled)return;const u=$("username").value.trim(),p=$("password").value;if(!u||!p){$("loginMsg").textContent="Username dan password wajib diisi";return}loginBtn.disabled=true;loginBtn.textContent="Memeriksa...";try{const r=await fetch("/api/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({username:u,password:p})});const d=await r.json().catch(()=>({error:"Respons server tidak valid"}));if(!d.token)throw Error(d.error||"Login gagal");token=d.token;try{localStorage.setItem("dcm_token",token)}catch(e){}$("loginMsg").textContent="";await enter()}catch(e){$("loginMsg").textContent=e.message}finally{loginBtn.disabled=false;loginBtn.textContent="Masuk"}}
@@ -1188,8 +1206,39 @@ async function exportWorkbook(list,title,filename){
  setTimeout(function(){URL.revokeObjectURL(a.href);if(a.parentNode)a.parentNode.removeChild(a)},5000);
 }
 $("monthExcel").onclick=async()=>{const ok=await loadMonthly();if(!ok){notify("Rekap bulan belum dapat dimuat",true);return}if(!monthlyCache.length){notify("Tidak ada data untuk diekspor",true);return}try{await exportWorkbook(monthlyCache,"REKAP MONITORING BULANAN ("+($("reportMonth").value||"-")+")","DCM-Menara-Pertiwi-Form-"+($("reportMonth").value||"bulanan")+".xlsx")}catch(e){notifyError(e)}};
+function wibPrevDay(){const d=new Date(Date.now()+7*3600*1000);d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10)}
+async function loadAdminHistory(){
+ const box=$("histSummary"),msg=$("histMsg");if(!box)return;
+ const date=$("histDate").value||wibPrevDay();
+ if(msg)msg.textContent="Memuat riwayat "+date+"...";
+ try{
+  const res=await Promise.all([api("/admin/summary?date="+encodeURIComponent(date)),api("/admin/shifts")]);
+  if(date!==$("histDate").value)return;
+  const reports=(res[0]&&res[0].reports)||[],shifts=(res[1]&&res[1].shifts)||[];
+  const byShift={};reports.forEach(function(r){const k=r.shift_name||"-";(byShift[k]=byShift[k]||[]).push(r)});
+  const known={};shifts.forEach(function(s){known[s.name]=1});
+  const sessionHtml=function(rows,sh,n){
+   const list=rows.filter(function(r){return Number(r.sesi)===n});
+   const trs=list.map(function(r){return "<tr><td>"+escapeHtml(r.name)+"</td><td>"+escapeHtml(r.kind)+"</td><td>"+escapeHtml(r.status||"Sudah Diisi")+"</td><td>"+(r.count||0)+" nilai</td><td>"+escapeHtml(r.follow_up_note||"-")+"</td></tr>"}).join("");
+   const label="Checklist sesi "+n+" shift "+escapeHtml(sh.name||"-");
+   return '<div class="hist-session"><p class="field-label">Sesi '+n+'</p>'+(trs?'<div class="scroll" tabindex="0" role="region" aria-label="'+label+'"><table><thead><tr><th>Teknisi</th><th>Jenis monitoring</th><th>Status</th><th>Terisi</th><th>Catatan</th></tr></thead><tbody>'+trs+'</tbody></table></div>':'<p class="hist-empty">Belum ada checklist terisi pada sesi ini.</p>')+'</div>';
+  };
+  let html=shifts.map(function(sh){
+   const rows=byShift[sh.name]||[];
+   return '<div class="hist-shift"><h3>'+escapeHtml(sh.name)+' <span class="muted">'+escapeHtml(sh.start_time)+"-"+escapeHtml(sh.end_time)+'</span></h3>'+[1,2,3].map(function(n){return sessionHtml(rows,sh,n)}).join("")+'</div>';
+  }).join("");
+  const orphan=reports.filter(function(r){return !known[r.shift_name||"-"]});
+  if(orphan.length){
+   html+='<div class="hist-shift"><h3>Tanpa shift</h3>'+[1,2,3].map(function(n){return sessionHtml(orphan,{name:"-"},n)}).join("")+'</div>';
+  }
+  box.innerHTML=html||'<p class="muted">Belum ada shift terdaftar.</p>';
+  if(msg)msg.textContent=reports.length+" checklist terisi pada "+date;
+ }catch(e){if(msg)msg.textContent=e.message;box.innerHTML='<p class="muted">Gagal memuat riwayat.</p>'}
+}
 async function loadNotif(){try{const d=await api("/admin/shift-status?date="+$("notifDate").value);$("notifMsg").textContent=d.date+", "+d.filledShifts+" dari "+d.totalShifts+" shift lengkap";$("notifRows").innerHTML=d.shifts.map(s=>{const names=s.techs.map(t=>escapeHtml(t.name)).join(", ");const by={};s.missing.forEach(m=>{(by[m.sesi]=by[m.sesi]||[]).push(m.kind)});const miss=[1,2,3].filter(k=>by[k]).map(k=>"Sesi "+k+": "+by[k].join(", ")).join("; ");const cls=!s.scheduled?"muted":(s.complete?"state-normal":"state-warning");const txt=!s.scheduled?"Tidak ada teknisi dijadwalkan":(s.complete?"Lengkap semua sesi":miss);return '<tr><td data-label="Shift"><b>'+escapeHtml(s.name)+'</b><br><span class="muted">'+escapeHtml(s.start_time)+"-"+escapeHtml(s.end_time)+'</span></td><td data-label="Teknisi">'+(names||'<span class="muted">-</span>')+'</td><td data-label="Terisi">'+(s.scheduled?s.filled+"/"+s.total:"-")+'</td><td data-label="Yang belum diisi"><span class="'+cls+'">'+escapeHtml(txt)+'</span></td></tr>'}).join("")}catch(e){$("notifMsg").textContent=e.message}}
 $("notifRefresh").onclick=loadNotif;
+$("histRefresh").onclick=loadAdminHistory;
+$("histDate").onchange=loadAdminHistory;
 $("notifDate").onchange=()=>setAdminDate($("notifDate").value);
 $("dashDate").onchange=()=>setAdminDate($("dashDate").value);
 $("dashRefresh").onclick=reloadAdmin;
