@@ -60,6 +60,7 @@ Logo di header berukuran 124x50px di desktop dan 104x42px di bawah 520px. Logo a
 
 - Header: tinggi 56px, latar `#0b2a4a`, teks `#ffffff`, garis bawah 3px `#ffffff`, judul 12.5px kapital. Logo 124x50px (104x42px di bawah 520px), tanpa latar dan tanpa garis, ditampilkan putih di atas header gelap.
 - Login: kartu putih terpusat, lebar maksimal 460px, latar halaman `--paper`, header dan footer disembunyikan. Garis atas 3px `--accent` mengikat kartu ini ke motif garis aksi header. Judul 22px kapital `--ink`, deskripsi 13.5px `--muted`, dua bidang bertumpuk penuh lebar dengan tinggi 44px dan radius 3px, tombol `--btn` dengan teks putih, dan catatan 12px `--muted`. Tombol tampilkan password muncul saat bidang difokuskan.
+- Form checklist: judul panel memakai jenis monitoring yang sedang diisi dan sesinya, tanpa sapaan nama. Judul mengikuti perubahan pilihan jenis, pilihan sesi, dan mode edit atau isi terlewat.
 - Sidebar: latar `#ffffff`, lebar 224px, tombol 32px, penanda aktif garis kiri 3px `--accent` dengan latar `--chrome`.
 - Tabel: kepala tabel latar `rgba(0,0,0,.06)`, huruf 10.5px kapital, baris 13px, hover `rgba(0,0,0,.09)`.
 - Readout: nilai mono 25px, label 10px kapital, catatan 11px. Readout bisa diklik dan punya `aria-label` lewat teks di dalamnya.
