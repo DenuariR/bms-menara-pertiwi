@@ -1,6 +1,6 @@
 # Aplikasi Android DCM Menara Pertiwi
 
-Aplikasi ini adalah pembungkus Flutter yang memuat Worker DCM Menara Pertiwi di WebView. Seluruh fitur (login, pengisian checklist, riwayat, rekap bulanan, panel admin) tetap berasal dari Worker. Aplikasi hanya menambah penanganan unduhan, cetak PDF, tombol kembali, dan layar saat koneksi gagal.
+Aplikasi ini adalah pembungkus Flutter yang memuat Worker DCM Menara Pertiwi di WebView. Seluruh fitur (login, pengisian checklist, riwayat, rekap bulanan, panel admin) tetap berasal dari Worker. Aplikasi hanya menambah penanganan unduhan, tombol kembali, dan layar saat koneksi gagal.
 
 Sesi login disimpan di `localStorage` WebView. Selama token masih berlaku, membuka kembali aplikasi langsung masuk ke halaman utama tanpa mengisi username dan password. Tombol Keluar dan token yang kedaluwarsa menghapus sesi tersebut.
 
@@ -8,9 +8,9 @@ Sesi login disimpan di `localStorage` WebView. Selama token masih berlaku, membu
 
 - `lib/app_config.dart`: nama aplikasi, URL Worker, dan host yang dianggap internal.
 - `lib/web_screen.dart`: WebView, layar muat, layar gangguan koneksi, serta alur tombol kembali.
-- `lib/bridge_script.dart`: skrip yang disuntikkan ke halaman untuk menangkap unduhan Excel dan jendela cetak PDF.
+- `lib/bridge_script.dart`: skrip yang disuntikkan ke halaman untuk menangkap unduhan Excel.
 - `lib/native_bridge.dart`: pembungkus MethodChannel `dcm/native`.
-- `android/app/src/main/kotlin/com/menarapertiwi/dcm/MainActivity.kt`: simpan berkas lewat pemilih berkas Android dan cetak PDF lewat `PrintManager`.
+- `android/app/src/main/kotlin/com/menarapertiwi/dcm/MainActivity.kt`: simpan berkas lewat pemilih berkas Android.
 - `android/app/src/main/res`: ikon peluncur adaptif, splash, warna, dan tema.
 
 ## Build lewat GitHub Actions
@@ -40,7 +40,6 @@ APK dari workflow memakai debug keystore agar bisa langsung dipasang untuk uji c
 ## Cara kerja ekspor
 
 - **Excel**: halaman membuat blob lalu memicu unduhan tautan. Skrip jembatan menangkap blob tersebut, mengirimnya ke Android, dan aplikasi membuka pemilih berkas (`ACTION_CREATE_DOCUMENT`). Berkas tersimpan di lokasi yang dipilih pengguna.
-- **PDF**: halaman membuka jendela cetak kosong lalu menulis HTML laporan ke jendela itu. Skrip jembatan menangkap HTML sebelum dicetak, lalu Android menampilkan dialog cetak sistem. Pilih **Save as PDF** untuk menyimpan berkas.
 - **Tautan luar**: alamat di luar host Worker dibuka di peramban bawaan perangkat.
 
 ## Mengubah alamat server
