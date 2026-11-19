@@ -1,3 +1,6 @@
+import java.util.Properties
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -13,8 +16,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 
     defaultConfig {
@@ -29,7 +32,8 @@ android {
         create("release") {
             val propsFile = rootProject.file("key.properties")
             if (propsFile.exists()) {
-                val props = java.util.Properties().apply { propsFile.inputStream().use { load(it) } }
+                val props = Properties()
+                propsFile.inputStream().use { props.load(it) }
                 storeFile = file(props.getProperty("storeFile") ?: "release.jks")
                 storePassword = props.getProperty("storePassword") ?: ""
                 keyAlias = props.getProperty("keyAlias") ?: ""
