@@ -1,0 +1,41 @@
+name: Capture Screenshots
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Ambil kode
+        uses: actions/checkout@v4
+
+      - name: Siapkan Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pasang Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install chromium
+
+      - name: Ambil screenshot
+        env:
+          BASE_URL: https://daily-checklist-monitoring.mipzu.workers.dev
+          SCREENSHOT_ADMIN_USER: ${{ secrets.SCREENSHOT_ADMIN_USER }}
+          SCREENSHOT_ADMIN_PASS: ${{ secrets.SCREENSHOT_ADMIN_PASS }}
+        run: node scripts/capture-screenshots.mjs
+
+      - name: Simpan screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm-screenshots
+          path: screenshots/*.png
+          if-no-files-found: error
+          retention-days: 7
