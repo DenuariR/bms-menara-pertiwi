@@ -1,5 +1,7 @@
 name = "daily-checklist-monitoring"
 main = "src/index.js"
+workers_dev = true
+preview_urls = true
 compatibility_date = "2026-10-15"
 compatibility_flags = ["nodejs_compat"]
 
@@ -14,3 +16,7 @@ database_id = "7903f509-b687-4e20-a0cd-80876c70d10e"
 name = "LOGIN_LIMITER"
 namespace_id = "1001"
 simple = { limit = 10, period = 60 }
+
+[[routes]]
+pattern = "dcm.denuriramadhan.my.id/*"
+zone_name = "denuriramadhan.my.id"
