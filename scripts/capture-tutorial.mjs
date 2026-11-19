@@ -32,8 +32,8 @@ try {
   await page.waitForSelector("#appShell:not(.hidden)", { timeout: 30000 });
   await page.waitForTimeout(2000);
 
-  await page.fill("#monitorDate", "2026-11-16");
-  await page.dispatchEvent("#monitorDate", "change");
+  await page.fill("#dashDate", "2026-11-16");
+  await page.dispatchEvent("#dashDate", "change");
   await page.waitForTimeout(3000);
   await page.screenshot({ path: `${OUT}/admin-dashboard-with-data.png` });
   console.log("saved admin-dashboard-with-data");
