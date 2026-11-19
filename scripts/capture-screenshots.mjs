@@ -121,7 +121,7 @@ try {
   await mpage.fill("#password", techPass);
   await mpage.click("#loginBtn");
   await mpage.waitForSelector("#appShell:not(.hidden)", { timeout: 30000 });
-  await mpage.waitForTimeout(2000);
+  await mpage.waitForTimeout(5500);
   await mpage.click('#kindNav button[data-kind="Chiller York Centrifugal"]');
   await mpage.waitForSelector("#formPanel:not(.hidden)", { timeout: 10000 });
   await mpage.waitForTimeout(1200);
