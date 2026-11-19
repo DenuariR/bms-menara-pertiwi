@@ -20,7 +20,8 @@ const api = async (path, opts = {}, token = "") => {
 };
 
 const shot = async (page, name, locator) => {
-  if (locator) {
+  const visible = locator ? await locator.isVisible().catch(() => false) : false;
+  if (visible) {
     await locator.scrollIntoViewIfNeeded();
     await locator.screenshot({ path: `${OUT}/${name}.png` });
   } else {
@@ -121,6 +122,9 @@ try {
   await mpage.click("#loginBtn");
   await mpage.waitForSelector("#appShell:not(.hidden)", { timeout: 30000 });
   await mpage.waitForTimeout(2000);
+  await mpage.click('#kindNav button[data-kind="Chiller York Centrifugal"]');
+  await mpage.waitForSelector("#formPanel:not(.hidden)", { timeout: 10000 });
+  await mpage.waitForTimeout(1200);
   await shot(mpage, "06-technician-form", mpage.locator("#formPanel"));
 
   await mpage.click("#navHist");
