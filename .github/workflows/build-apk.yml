@@ -60,9 +60,6 @@ jobs:
           test -n "$STORE_PASS"
           test -n "$KEY_ALIAS"
           printf 'storeFile=release.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n' "$STORE_PASS" "$KEY_ALIAS" "$STORE_PASS" > app/android/key.properties
-          keytool -importkeystore \
-            -srckeystore app/android/app/release.jks -srcstorepass "$STORE_PASS" -srcalias "$KEY_ALIAS" -srckeypass "$KEY_PASS" \
-            -destkeystore /tmp/keystore-check.jks -deststoretype PKCS12 -deststorepass "$STORE_PASS" -destalias "$KEY_ALIAS" -destkeypass "$KEY_PASS"
           echo "Konfigurasi penandatanganan siap."
 
       - name: Build APK rilis
