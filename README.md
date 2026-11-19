@@ -50,6 +50,10 @@
 
 <img src="docs/screenshots/02-admin-dashboard.png" width="900" alt="Dashboard admin dengan angka ringkasan dan grafik">
 
+Dashboard dengan data checklist yang sudah terisi:
+
+<img src="docs/screenshots/admin-dashboard-with-data.png" width="900" alt="Dashboard admin dengan data checklist, grafik berwarna, dan progres teknisi">
+
 ### Riwayat checklist per shift dan sesi
 
 <img src="docs/screenshots/03-admin-history.png" width="900" alt="Riwayat checklist admin per shift dan sesi">
@@ -69,3 +73,9 @@
 ### Riwayat checklist teknisi
 
 <img src="docs/screenshots/07-technician-history.png" width="360" alt="Riwayat checklist teknisi pada layar telepon">
+
+## Video tutorial pengisian checklist
+
+<video controls width="360" src="docs/videos/checklist-tutorial.webm">
+  Browser Anda tidak mendukung video WebM.
+</video>
