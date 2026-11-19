@@ -54,7 +54,7 @@ try {
   const today = new Date(Date.now() + 7 * 3600 * 1000).toISOString().slice(0, 10);
   await api("/admin/schedule/day", {
     method: "POST",
-    body: JSON.stringify({ date: today, users: [{ user_id: tempUserId, shift_ids: [1], off: false }] }),
+    body: JSON.stringify({ date: today, users: [{ user_id: tempUserId, shift_ids: [2], off: false }] }),
   }, adminToken);
   console.log("temp user and schedule created");
 
@@ -95,8 +95,10 @@ try {
   await mpage.click("#save");
   await mpage.waitForFunction(() => {
     const el = document.getElementById("saveMsg");
-    return el && /tersimpan/i.test(el.textContent || "");
+    return el && (el.textContent || "").trim().length > 0;
   }, { timeout: 30000 });
+  const saveMessage = await mpage.locator("#saveMsg").textContent();
+  console.log("save message:", saveMessage);
   await sleep(1500);
   await mpage.click("#navHist");
   await mpage.waitForSelector("#histPanel:not(.hidden)");
