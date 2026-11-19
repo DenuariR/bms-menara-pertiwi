@@ -76,6 +76,6 @@ Dashboard dengan data checklist yang sudah terisi:
 
 ## Video tutorial pengisian checklist
 
-<video controls width="360" src="docs/videos/checklist-tutorial.webm">
-  Browser Anda tidak mendukung video WebM.
-</video>
+![Video tutorial pengisian checklist](docs/videos/checklist-tutorial.gif)
+
+[Unduh versi video WebM](docs/videos/checklist-tutorial.webm)
