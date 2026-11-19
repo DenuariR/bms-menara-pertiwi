@@ -81,7 +81,8 @@ try {
   const fields = await mpage.locator("#checkFields [data-item]").all();
   for (const field of fields) {
     const type = await field.getAttribute("data-type");
-    if (field.tagName === "SELECT") {
+    const tag = await field.evaluate((el) => el.tagName);
+    if (tag === "SELECT") {
       const opts = await field.locator("option").all();
       if (opts.length > 1) await field.selectOption({ index: 1 });
     } else {
