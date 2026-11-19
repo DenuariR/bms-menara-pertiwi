@@ -55,13 +55,11 @@ jobs:
         env:
           STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
           set -e
           test -n "$STORE_PASS"
           test -n "$KEY_ALIAS"
-          test -n "$KEY_PASS"
-          printf 'storeFile=release.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n' "$STORE_PASS" "$KEY_ALIAS" "$KEY_PASS" > app/android/key.properties
+          printf 'storeFile=release.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n' "$STORE_PASS" "$KEY_ALIAS" "$STORE_PASS" > app/android/key.properties
           keytool -importkeystore \
             -srckeystore app/android/app/release.jks -srcstorepass "$STORE_PASS" -srcalias "$KEY_ALIAS" -srckeypass "$KEY_PASS" \
             -destkeystore /tmp/keystore-check.jks -deststoretype PKCS12 -deststorepass "$STORE_PASS" -destalias "$KEY_ALIAS" -destkeypass "$KEY_PASS"

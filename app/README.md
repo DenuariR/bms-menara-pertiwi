@@ -35,7 +35,7 @@ Hasil build ada di `app/build/app/outputs/flutter-apk/app-release.apk`.
 
 ## Tanda tangan APK
 
-APK dari workflow ditandatangani dengan keystore rilis. `android/app/build.gradle.kts` membaca `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, dan `ANDROID_KEY_PASSWORD` dari lingkungan build. Workflow mendekode `ANDROID_KEYSTORE_BASE64` menjadi `android/app/release.jks` sebelum menjalankan build, lalu memverifikasi tanda tangan dengan `apksigner`. Keystore dan kata sandinya disimpan sebagai GitHub Secrets, bukan di repository.
+APK dari workflow ditandatangani dengan keystore rilis. `android/app/build.gradle.kts` membaca `android/key.properties` yang dibuat workflow dari GitHub Secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, dan `ANDROID_KEY_ALIAS`. Karena keystore dibuat sebagai PKCS12, kata sandi kunci sama dengan kata sandi toko, sehingga `keyPassword` tidak disimpan terpisah. Workflow memverifikasi tanda tangan APK dengan `apksigner`.
 
 ## Cara kerja ekspor
 
