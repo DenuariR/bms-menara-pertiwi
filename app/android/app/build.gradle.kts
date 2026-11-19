@@ -27,19 +27,20 @@ android {
 
     signingConfigs {
         create("release") {
-            val jks = file("release.jks")
-            if (jks.exists()) {
-                storeFile = jks
-                storePassword = System.getenv("ANDROID_KEYSTORE_PASSWORD") ?: ""
-                keyAlias = System.getenv("ANDROID_KEY_ALIAS") ?: ""
-                keyPassword = System.getenv("ANDROID_KEY_PASSWORD") ?: ""
+            val propsFile = rootProject.file("key.properties")
+            if (propsFile.exists()) {
+                val props = java.util.Properties().apply { propsFile.inputStream().use { load(it) } }
+                storeFile = file(props.getProperty("storeFile") ?: "release.jks")
+                storePassword = props.getProperty("storePassword") ?: ""
+                keyAlias = props.getProperty("keyAlias") ?: ""
+                keyPassword = props.getProperty("keyPassword") ?: ""
             }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = if (file("release.jks").exists()) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
+            signingConfig = if (rootProject.file("key.properties").exists()) signingConfigs.getByName("release") else signingConfigs.getByName("debug")
             isMinifyEnabled = false
             isShrinkResources = false
         }

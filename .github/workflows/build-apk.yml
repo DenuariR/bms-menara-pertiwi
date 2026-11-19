@@ -51,12 +51,24 @@ jobs:
           echo "$KEYSTORE_B64" | base64 -d > app/android/app/release.jks
           test -s app/android/app/release.jks
 
+      - name: Tulis konfigurasi penandatanganan
+        env:
+          STORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          KEY_PASS: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          set -e
+          test -n "$STORE_PASS"
+          test -n "$KEY_ALIAS"
+          test -n "$KEY_PASS"
+          printf 'storeFile=release.jks\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n' "$STORE_PASS" "$KEY_ALIAS" "$KEY_PASS" > app/android/key.properties
+          keytool -importkeystore \
+            -srckeystore app/android/app/release.jks -srcstorepass "$STORE_PASS" -srcalias "$KEY_ALIAS" -srckeypass "$KEY_PASS" \
+            -destkeystore /tmp/keystore-check.jks -deststoretype PKCS12 -deststorepass "$STORE_PASS" -destalias "$KEY_ALIAS" -destkeypass "$KEY_PASS"
+          echo "Konfigurasi penandatanganan siap."
+
       - name: Build APK rilis
         working-directory: app
-        env:
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: flutter build apk --release
 
       - name: Verifikasi tanda tangan APK
