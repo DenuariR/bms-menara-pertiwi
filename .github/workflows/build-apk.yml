@@ -39,14 +39,42 @@ jobs:
         working-directory: app
         run: flutter pub get
 
+      - name: Siapkan keystore rilis
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          set -e
+          if [ -z "$KEYSTORE_B64" ]; then
+            echo "Rahasia ANDROID_KEYSTORE_BASE64 belum tersedia."
+            exit 1
+          fi
+          echo "$KEYSTORE_B64" | base64 -d > app/android/app/release.jks
+          test -s app/android/app/release.jks
+
       - name: Build APK rilis
         working-directory: app
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: flutter build apk --release
+
+      - name: Verifikasi tanda tangan APK
+        run: |
+          set -e
+          APK=app/build/app/outputs/flutter-apk/app-release.apk
+          for signer in "$ANDROID_HOME"/build-tools/*/apksigner; do
+            if [ -x "$signer" ]; then
+              "$signer" verify --print-certs "$APK"
+              exit 0
+            fi
+          done
+          echo "apksigner tidak ditemukan, verifikasi dilewati."
 
       - name: Simpan APK
         uses: actions/upload-artifact@v4
         with:
-          name: dcm-menara-pertiwi-apk
+          name: dcm-menara-pertiwi-release
           path: app/build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error
           retention-days: 30
