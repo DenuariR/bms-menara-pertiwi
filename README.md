@@ -39,3 +39,33 @@
 - Tombol kembali menutup dialog, kembali ke halaman sebelumnya, lalu keluar setelah ditekan dua kali.
 - Layar muat saat membuka aplikasi dan layar khusus saat koneksi terputus.
 - Tampilan menyesuaikan layar telepon dan area aman perangkat.
+
+## Tampilan
+
+### Masuk
+
+<img src="docs/screenshots/01-login.png" width="700" alt="Tampilan halaman masuk">
+
+### Dashboard admin
+
+<img src="docs/screenshots/02-admin-dashboard.png" width="900" alt="Dashboard admin dengan angka ringkasan dan grafik">
+
+### Riwayat checklist per shift dan sesi
+
+<img src="docs/screenshots/03-admin-history.png" width="900" alt="Riwayat checklist admin per shift dan sesi">
+
+### Monitoring harian
+
+<img src="docs/screenshots/04-admin-monitoring.png" width="900" alt="Tabel monitoring harian">
+
+### Jadwal shift
+
+<img src="docs/screenshots/05-admin-schedule.png" width="900" alt="Grid jadwal shift bulanan">
+
+### Form checklist teknisi
+
+<img src="docs/screenshots/06-technician-form.png" width="360" alt="Form pengisian checklist pada layar telepon">
+
+### Riwayat checklist teknisi
+
+<img src="docs/screenshots/07-technician-history.png" width="360" alt="Riwayat checklist teknisi pada layar telepon">
