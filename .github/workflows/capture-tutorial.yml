@@ -1,0 +1,41 @@
+name: Capture Tutorial
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Ambil kode
+        uses: actions/checkout@v4
+
+      - name: Siapkan Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Pasang Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install chromium
+
+      - name: Ambil video tutorial dan screenshot
+        env:
+          BASE_URL: https://dcm.denuriramadhan.my.id/
+          TUTORIAL_ADMIN_USER: ${{ secrets.TUTORIAL_ADMIN_USER }}
+          TUTORIAL_ADMIN_PASS: ${{ secrets.TUTORIAL_ADMIN_PASS }}
+        run: node scripts/capture-tutorial.mjs
+
+      - name: Simpan aset
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm-tutorial-assets
+          path: tutorial/*
+          if-no-files-found: error
+          retention-days: 7
