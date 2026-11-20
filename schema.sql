@@ -51,7 +51,7 @@ INSERT OR IGNORE INTO shifts(name,start_time,end_time) VALUES
 
 CREATE TABLE IF NOT EXISTS checklist_history (
  id INTEGER PRIMARY KEY AUTOINCREMENT,
- user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
  date TEXT NOT NULL, kind TEXT NOT NULL, shift_id INTEGER REFERENCES shifts(id),
  status TEXT NOT NULL, change_summary TEXT NOT NULL, old_values_json TEXT NOT NULL DEFAULT '{}', new_values_json TEXT NOT NULL DEFAULT '{}', changed_at TEXT NOT NULL, sesi INTEGER NOT NULL DEFAULT 1
 );
