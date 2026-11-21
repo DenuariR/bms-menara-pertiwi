@@ -1,0 +1,26 @@
+name: Layout Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: |
+          npm init -y
+          npm install playwright
+          npx playwright install chromium
+      - name: Ukur layout
+        env:
+          LAYOUT_ADMIN_USER: ${{ secrets.LAYOUT_ADMIN_USER }}
+          LAYOUT_ADMIN_PASS: ${{ secrets.LAYOUT_ADMIN_PASS }}
+        run: node scripts/layout-check.mjs
