@@ -10,6 +10,8 @@ await page.fill("#password", process.env.ADMIN_CHECK_PASS);
 await page.click("#loginBtn");
 await page.waitForSelector("#appShell:not(.hidden)", { timeout: 30000 });
 await page.waitForTimeout(2500);
+await page.click('#adminHome button[data-admintab-btn="ringkasan"]');
+await page.waitForTimeout(1200);
 
 const tabs = ["ringkasan", "monitoring", "rekap", "jadwal", "pengaturan", "password"];
 const results = [];
