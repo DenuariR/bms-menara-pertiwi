@@ -16,7 +16,7 @@ await page.waitForTimeout(1200);
 const tabs = ["ringkasan", "monitoring", "rekap", "jadwal", "pengaturan", "password"];
 const results = [];
 for (const tab of tabs) {
-  await page.click(`#adminTabs button[data-admintab-btn="${tab}"]`);
+  await page.evaluate((t) => { const b = document.querySelector('#adminTabs button[data-admintab-btn="' + t + '"]'); if (b) b.click(); }, tab);
   await page.waitForTimeout(1800);
   const r = await page.evaluate(() => {
     const sw = document.documentElement.scrollWidth;
