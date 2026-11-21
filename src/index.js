@@ -572,7 +572,7 @@ dialog::backdrop{background:rgba(0,0,0,.7)}
 </div>
 </div>
 </main>
-<footer class="site-foot"><span>DCM Menara Pertiwi</span><span>Checklist operasional</span></footer>
+<footer class="site-foot"><span id="footerCopy">© 2026 Denuari Ramadhan</span><span>DCM Menara Pertiwi</span></footer>
 <div id="busy" class="busy hidden" aria-hidden="true"><div class="busy-bar"></div></div>
 <p id="busyMsg" class="sr-only" role="status" aria-live="polite"></p>
 <div id="toast" class="toastbar" role="status" aria-live="polite"></div>
@@ -1201,6 +1201,8 @@ $("r14").onclick=()=>{trendRange=14;drawTrendChart()};
 $("r30").onclick=()=>{trendRange=30;drawTrendChart()};
 function wibTodayClient(){const d=new Date(Date.now()+7*3600*1000);return d.toISOString().slice(0,10)}
 async function loadMySchedule(){if(!me||me.role!=="user"){$("myScheduleBox").innerHTML="";return}try{const d=await api("/my-schedule");const off=d.off||[];const items=d.schedule.map(x=>({d:x.date,h:'<span class="state-normal">'+x.date+' | '+escapeHtml(x.shift_name)+' ('+x.start_time+'-'+x.end_time+')</span>'})).concat(off.map(x=>({d:x.date,h:'<span class="muted">'+x.date+' | Libur</span>'})));items.sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);$("myScheduleBox").innerHTML=items.length?'<b>Jadwal tugas saya</b><br>'+items.map(i=>i.h).join("<br>"):'<span class="muted">Anda belum punya jadwal tugas. Hubungi Admin.</span>'}catch(e){}}
+function setFooterCopy(){var el=$("footerCopy");if(el)el.textContent="© "+new Date().getFullYear()+" Denuari Ramadhan"}
+setFooterCopy();
 if(token){enter()}
 </script></body></html>`;
 let SQLC=null;
