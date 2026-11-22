@@ -1,0 +1,26 @@
+name: Admin Function Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: |
+          npm init -y
+          npm install playwright
+          npx playwright install chromium
+      - name: Uji fungsi admin
+        env:
+          FUNC_ADMIN_USER: ${{ secrets.FUNC_ADMIN_USER }}
+          FUNC_ADMIN_PASS: ${{ secrets.FUNC_ADMIN_PASS }}
+        run: node scripts/admin-func-check.mjs
