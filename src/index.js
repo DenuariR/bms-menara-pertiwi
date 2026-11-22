@@ -90,6 +90,7 @@ a{color:var(--accent)}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:12px;top:12px;z-index:60;background:var(--surface);color:var(--text);padding:8px 12px;border:1px solid var(--control);border-radius:var(--r)}
 @media(max-width:520px){:root{--topbar:52px}.topbar{height:calc(52px + env(safe-area-inset-top,0px));padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));gap:10px}.brand img{width:104px;height:42px}.topbar h1{font-size:11px;letter-spacing:.02em}}
+@media(max-width:600px){#adminArea>.admin-tabs nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;width:100%;min-width:0}#adminArea>.admin-tabs button{justify-content:center;padding:6px 3px;font-size:11px;gap:4px;min-width:0;text-align:center}#adminArea>.admin-tabs button .ico{width:14px;height:14px;flex:0 0 auto}html{scroll-padding-top:calc(var(--topbar) + 100px + env(safe-area-inset-top,0px))}.panel,#main,section[id]{scroll-margin-top:calc(var(--topbar) + 100px + env(safe-area-inset-top,0px))}}
 @media(max-width:420px){.brand img{width:90px;height:38px}.topbar h1{font-size:10px;letter-spacing:0}.topbar .btn{padding:4px 8px;font-size:11px}#main{min-height:calc(100dvh - 112px)}}
 .wrap{max-width:1180px;margin:0 auto;padding:20px 20px 28px;padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 .panel,#main,section[id]{scroll-margin-top:calc(var(--topbar) + 12px)}
