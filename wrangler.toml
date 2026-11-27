@@ -22,5 +22,5 @@ pattern = "dcm.denuriramadhan.my.id/*"
 zone_name = "denuriramadhan.my.id"
 
 [[routes]]
-pattern = "eng-prtw.web.id/*"
+pattern = "dcm.eng-prtw.web.id/*"
 zone_name = "eng-prtw.web.id"
